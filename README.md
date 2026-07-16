@@ -12,7 +12,13 @@ Packaged as both a Claude Code plugin and a standalone [Agent Skill](https://age
 
 ### For Claude Code (recommended)
 
-Run these directly inside Claude Code — no terminal, no extra flags, nothing to auto-detect:
+**One-time setup — run in a terminal**, even if you plan to use Desktop day-to-day. `/plugin marketplace add` and `/plugin install` are CLI-terminal commands; typing them into Desktop's prompt box doesn't work (Desktop replies that plugin commands only work in the terminal). Registering the marketplace this way makes it visible everywhere afterward, including Desktop, so this is a one-time step regardless of where you'll actually use it:
+
+```
+claude
+```
+
+Then, inside that terminal session:
 
 ```
 /plugin marketplace add checklist-design/design-critique
@@ -20,6 +26,8 @@ Run these directly inside Claude Code — no terminal, no extra flags, nothing t
 ```
 
 This installs the full plugin — the skill, the `/checklist-design:critique` command, and a hook that helps Claude reach for it reliably (see "Why a hook" below).
+
+**Using Claude Code Desktop?** Once the marketplace is registered (from the terminal step above), it'll show up in Desktop too. If it shows as available but not installed, finish the install from Desktop's own panel instead of typing the command: click the **+** button next to the prompt box → **Plugins** → find `checklist-design` → **Install**. That GUI click works where the typed slash command doesn't.
 
 **Already have it installed under the old name?** Earlier versions of this plugin were named `design-critique`. Run `/plugin remove design-critique` (or `design-critique@checklist-design`) first, then install as above.
 
@@ -72,9 +80,11 @@ What's wrong with this screen?
 If you'd rather trigger it explicitly:
 
 ```
-/checklist-design:critique     (plugin install)
+/checklist-design:critique     (plugin install, CLI terminal)
 /critique                      (npx skills add / manual copy)
 ```
+
+**In Claude Code Desktop**, typing `/checklist-design:critique` may not autocomplete reliably — this is a known Desktop-specific gap in discovering plugin-sourced commands. Two more reliable options there: just ask in plain language (it worked in testing even without any slash command), or use **+ → Plugins → Checklist design → critique** to invoke it directly from the menu.
 
 Either way, it'll walk through purpose, hierarchy, layout, typography, color, accessibility, interaction, and polish — but only where relevant, and only calling out what it can actually point to in the frame.
 
