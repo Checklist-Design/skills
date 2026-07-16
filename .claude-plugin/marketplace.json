@@ -1,0 +1,15 @@
+{
+  "name": "checklist-design",
+  "owner": {
+    "name": "Checklist Design",
+    "url": "https://checklist.design"
+  },
+  "plugins": [
+    {
+      "name": "checklist-design",
+      "source": "./",
+      "description": "Checklist Design's Claude Code tools, starting with /checklist-design:critique.",
+      "version": "1.0.0"
+    }
+  ]
+}
