@@ -114,6 +114,12 @@ If you'd rather it capture a live URL or your own local dev server directly (e.g
 
 This is a one-time setup, optional, and not specific to this skill — if you've already got a browser tool configured for other things, there's nothing extra to do. Without any of the above, the skill will ask you for a screenshot instead of guessing at how a page renders.
 
+## Grounded in Checklist Design's own checklists
+
+When a screen clearly matches one of [Checklist Design's](https://checklist.design) 100+ published checklists — a settings screen, a permissions prompt, a pricing page — the critique checks itself against that checklist's specific items and links back to it, instead of relying only on general design heuristics. This happens automatically; there's nothing to configure.
+
+It needs outbound network access to `checklist.design` to do this (a fetch or browser tool). Without one, or if nothing matches well, the critique just runs as normal — this is an enhancement, not a requirement.
+
 ## What makes this different
 
 Most AI design feedback reads like a checklist read aloud. This skill is deliberately tuned against that: a small blocklist of "AI report" words (*effectively, leverages, optimises, streamlined*, and similar), a requirement to name at least two genuine strengths, and a rule that considerations without a specific visible cause get dropped rather than padded in.
