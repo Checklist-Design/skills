@@ -18,6 +18,19 @@ Before critiquing, work out what you're actually assessing, and say so at the st
 
 State plainly what you ended up assessing — e.g. "Reviewing the screenshot you shared," "Reviewing a capture of localhost:3000," or "I can't see a rendered version of this yet — could you share a screenshot?" This keeps you and the person aligned on what's actually being judged before any feedback lands.
 
+## Grounding in Checklist Design's checklists
+
+Once you know what you're looking at, check whether any of Checklist Design's own checklists apply to it. This is what turns a couple of observations into something specific rather than generic — but it's optional, not a required step. If it doesn't work, the critique still stands fine without it.
+
+1. Fetch the catalog: `GET https://www.checklist.design/api/checklists/grouped`. No login, no key. It returns every published checklist with a name, slug, description, and category. If you have no way to make a network request in this environment, skip this whole section and critique normally — don't mention that you skipped it.
+2. Compare what you're reviewing against the catalog's names and descriptions, and pick whichever checklists plausibly apply. Often one, sometimes two or three — a settings screen with a permissions section can reasonably match both a "Settings" and a "Permissions" checklist. If nothing matches well, don't force one — move on without citing anything.
+3. If the request narrows scope ("skip components," "just the layout"), respect that when picking — don't pull in a checklist that's about something the person just said not to look at.
+4. For each checklist picked, fetch its items: `GET https://www.checklist.design/api/checklists/by-slug?slug={slug}&category={category-slug}`, using the `slug` and the checklist's category slug from the catalog response.
+5. Use specific items to back up a strength or consideration you were already going to raise — don't invent a new point just because a matching item exists. When you cite one, name it in plain language ("the Permissions checklist calls this out") and link to the page where natural: `https://www.checklist.design/{category-slug}/{checklist-slug}`.
+6. Mention which checklist(s) you checked against in one short line, not a formal list — e.g. "Checked this against the Settings and Permissions checklists."
+
+Keep it light. One or two grounded references beat citing an item for every point — this is meant to sharpen a couple of observations, not turn the critique into a checklist read aloud. If the fetch fails for any reason — no network tool, timeout, the site's down — drop this section silently and continue with a normal critique. Never block on it or apologize for it.
+
 ## Before you comment
 
 Look carefully at what's actually in the design — what elements are there, how they're arranged, what the screen is trying to do. Only comment on what you can actually see. Don't invent context that isn't visible in the frame.
@@ -53,13 +66,16 @@ When this skill is wired into an app, API, or automated pipeline, return strict 
 {
   "confidence": "low|medium|high",
   "strengths": ["things the design genuinely does well, in plain language. Aim for at least 2 if you can honestly identify them. Only include things you're confident about."],
-  "considerations": ["things worth looking at, written as casual suggestions, not formal critiques."]
+  "considerations": ["things worth looking at, written as casual suggestions, not formal critiques."],
+  "checklistsReferenced": [{ "name": "Permissions", "url": "https://www.checklist.design/mobile/permissions" }]
 }
 ```
 
+`checklistsReferenced` is optional — include an entry only for checklists that actually backed up a strength or consideration above (see "Grounding in Checklist Design's checklists"). Omit the field, or return an empty array, if none applied.
+
 No markdown inside the JSON values — raw text only.
 
-When this skill is used conversationally (e.g. inside a chat session, not called via API), present the same strengths and considerations as plain prose instead of raw JSON. Open with the one-line statement of what you're assessing (see "What you're looking at" above), then the strengths and considerations. The structure of the thinking matters more than the output format.
+When this skill is used conversationally (e.g. inside a chat session, not called via API), present the same strengths and considerations as plain prose instead of raw JSON. Open with the one-line statement of what you're assessing (see "What you're looking at" above), then the strengths and considerations. If any checklists were referenced, that comes through naturally in the prose (see step 6 above) rather than as a separate list. The structure of the thinking matters more than the output format.
 
 ## Tone
 
@@ -75,3 +91,4 @@ When this skill is used conversationally (e.g. inside a chat session, not called
 - If you can't point to a specific element that demonstrates the issue, leave it out.
 - Respect standard UI patterns — don't suggest changing conventions like payment fields, login flows, or standard form layouts.
 - Aim for at least two strengths where you can honestly identify them — a critique that's all considerations and no strengths reads as unbalanced, not thorough.
+- A checklist citation follows the same bar as anything else here — only use one where it genuinely matches something visible. A weak match isn't worth forcing in.

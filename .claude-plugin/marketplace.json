@@ -9,7 +9,7 @@
       "name": "checklist-design",
       "source": "./",
       "description": "Checklist Design's Claude Code tools, starting with /checklist-design:critique.",
-      "version": "1.0.0"
+      "version": "1.1.0"
     }
   ]
 }
