@@ -1,6 +1,6 @@
 ---
 name: critique
-description: Quick, honest peer-style critique of a UI or product design — a screenshot, a live URL, or a page someone is building locally — evaluating purpose, hierarchy, layout, typography, color, accessibility, interaction, and polish, in the voice of a designer leaving a comment for a colleague whose work they respect. Use when the user shares a screenshot or URL, or asks for feedback, a design review, or a critique on a page, screen, or interface they're building or reviewing.
+description: Quick, honest peer-style critique of a UI or product design — a screenshot, a live URL, or a page someone is building locally — evaluating purpose, hierarchy, layout, typography, color, accessibility, interaction, and polish, in the voice of a designer leaving a comment for a colleague whose work they respect. Use when the user shares a screenshot or URL, or asks for feedback, a design review, or a critique on a page, screen, or interface they're building or reviewing. For a systematic, item-by-item check against one of Checklist Design's checklists, use the audit skill instead.
 license: MIT — see LICENSE
 ---
 

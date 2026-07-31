@@ -2,7 +2,7 @@
 
 [![skills.sh](https://skills.sh/b/checklist-design/design-critique)](https://skills.sh/checklist-design/design-critique)
 
-Checklist Design's tools for AI coding agents, starting with `critique` — a quick, honest peer review of a UI screenshot, live page, or local build, written in the voice of a designer leaving a comment for a colleague, not a design report.
+Checklist Design's tools for AI coding agents: `critique` — a quick, honest peer review of a UI screenshot, live page, or local build, written in the voice of a designer leaving a comment for a colleague, not a design report — and `audit` — a systematic, item-by-item check of a screen against one of Checklist Design's published checklists, for when you want to know specifically what's covered and what isn't.
 
 Originally built as the prompt behind the AI quality checker in the [Checklist Design](https://checklist.design) Figma plugin, and refined through real usage before being packaged here.
 
@@ -25,7 +25,7 @@ Then, inside that terminal session:
 /plugin install checklist-design@checklist-design
 ```
 
-This installs the full plugin — the skill, the `/checklist-design:critique` command, and a hook that helps Claude reach for it reliably (see "Why a hook" below).
+This installs the full plugin — both skills, the `/checklist-design:critique` and `/checklist-design:audit` commands, and a hook that helps Claude reach for the right one reliably (see "Why a hook" below).
 
 **Using Claude Code Desktop?** Once the marketplace is registered (from the terminal step above), it'll show up in Desktop too. If it shows as available but not installed, finish the install from Desktop's own panel instead of typing the command: click the **+** button next to the prompt box → **Plugins** → find `checklist-design` → **Install**. That GUI click works where the typed slash command doesn't.
 
@@ -41,7 +41,7 @@ npx skills add checklist-design/design-critique -a claude-code
 
 The `-a claude-code` flag matters if you're also installing for Claude Code this way instead of using the plugin method above — the installer only auto-selects agents it detects as already configured on your machine, so without it, Claude Code can silently get skipped even if it's installed. Swap or add other agent names as needed, e.g. `-a cursor -a codex`.
 
-Installed this way, the command is `/critique` (not namespaced) — the generic Agent Skills tooling doesn't apply the plugin-style `checklist-design:` prefix. Same skill either way, just a different command name depending on install path.
+Installed this way, the commands are `/critique` and `/audit` (not namespaced) — the generic Agent Skills tooling doesn't apply the plugin-style `checklist-design:` prefix. Same skills either way, just different command names depending on install path.
 
 After installing, verify it actually landed where you expect:
 
@@ -53,23 +53,23 @@ npx skills list
 
 ### Manual copy
 
-Copy the skill folder into your tool's skills directory:
+Copy the skill folder(s) you want into your tool's skills directory — `critique`, `audit`, or both:
 
 **Claude Code (project-specific):**
 ```
-cp -r skills/critique your-project/.claude/skills/
+cp -r skills/critique skills/audit your-project/.claude/skills/
 ```
 
 **Claude Code (global — applies to all projects):**
 ```
-cp -r skills/critique ~/.claude/skills/
+cp -r skills/critique skills/audit ~/.claude/skills/
 ```
 
 Other tools that support the Agent Skills format (Cursor, OpenCode, etc.) read from their own equivalent `skills/` directory — check your tool's docs for the exact path.
 
 ## Usage
 
-Once installed, the skill activates on its own — no command to remember. Claude reads the skill's description in the background and loads it automatically when your request matches, so you can just share a screenshot and ask in plain language:
+Once installed, both skills activate on their own — no command to remember. Claude reads each skill's description in the background and loads whichever one matches your request, so you can just share a screenshot and ask in plain language:
 
 ```
 Critique this design
@@ -88,11 +88,23 @@ If you'd rather trigger it explicitly:
 
 Either way, it'll walk through purpose, hierarchy, layout, typography, color, accessibility, interaction, and polish — but only where relevant, and only calling out what it can actually point to in the frame.
 
+## Auditing against a specific checklist
+
+`critique` is a general opinion. `audit` is different — it picks (or takes) one of Checklist Design's checklists and goes through it item by item: what's there, what's missing, and whether a missing item is actually a problem or just doesn't apply here.
+
+```
+Audit this against the Login checklist
+Check this screen against Checklist Design's Permissions checklist
+What's missing from this cart page?
+```
+
+If you don't name a checklist, it'll find the one that best matches what you're showing it — or tell you plainly if nothing matches well, rather than forcing one. Trigger it explicitly with `/checklist-design:audit` (plugin install) or `/audit` (`npx skills add` / manual copy).
+
 ### Why a hook
 
 Natural-language auto-invocation is reliable for pure feedback requests ("critique this screenshot"), but testing found it can lose out to Claude Code's own investigative instincts when a request also implies technical work — "critique my homepage" can send Claude straight into finding the file and starting the dev server without ever loading the skill, which means the response comes out in Claude's default voice instead of this skill's tuned one.
 
-The plugin install includes a `UserPromptSubmit` hook that checks incoming prompts for critique-shaped language and nudges Claude toward the skill before it starts reasoning, rather than leaving it entirely to chance. It's a plugin-only feature — the `npx skills add` and manual-copy paths don't get it, since those only install the `skills/` folder, not the plugin's hooks.
+The plugin install includes a `UserPromptSubmit` hook that checks incoming prompts for critique- or audit-shaped language and nudges Claude toward the right skill before it starts reasoning, rather than leaving it entirely to chance. It's a plugin-only feature — the `npx skills add` and manual-copy paths don't get it, since those only install the `skills/` folder, not the plugin's hooks.
 
 If you update the plugin and the hook doesn't seem to be firing, run `/reload-plugins` (or restart Claude Code) — hook and command changes need a reload to take effect, unlike skill content edits which apply live.
 
@@ -116,9 +128,13 @@ This is a one-time setup, optional, and not specific to this skill — if you've
 
 ## Grounded in Checklist Design's own checklists
 
-When a screen clearly matches one of [Checklist Design's](https://checklist.design) 100+ published checklists — a settings screen, a permissions prompt, a pricing page — the critique checks itself against that checklist's specific items and links back to it, instead of relying only on general design heuristics. This happens automatically; there's nothing to configure.
+Both skills pull from [Checklist Design's](https://checklist.design) 100+ published checklists, live, rather than having them baked in — so new checklists become available the moment they're published on the site, with nothing to update here.
 
-It needs outbound network access to `checklist.design` to do this (a fetch or browser tool). Without one, or if nothing matches well, the critique just runs as normal — this is an enhancement, not a requirement.
+For `critique`, this is an enhancement: when a screen clearly matches a checklist, it checks itself against that checklist's specific items and links back to it, instead of relying only on general design heuristics. If nothing matches well, it just runs as a normal critique.
+
+For `audit`, this is the whole mechanism — there's no generic fallback, since the point is checking against a specific checklist.
+
+Either way, it needs outbound network access to `checklist.design` (a fetch or browser tool) to do this.
 
 ## What makes this different
 
