@@ -1,7 +1,11 @@
 ---
-name: audit
-description: Systematic audit of a UI or product design against one of Checklist Design's published checklists — goes through every item on the checklist, marks it present, missing, not needed, or unclear from what's shown, and explains which gaps actually matter. This is a completeness check, not a general design opinion. Use when the user asks to audit a screen, check it against a checklist, verify coverage, or find out what's missing. For open-ended feedback or a general design review, use the critique skill instead.
+name: design-audit
+description: Systematic audit of a UI or product design against one of Checklist Design's published checklists — goes through every item on the checklist, marks it present, missing, not needed, or unclear from what's shown, and explains which gaps actually matter. This is a completeness check, not a general design opinion. Use when the user asks to audit a screen, check it against a checklist, verify coverage, find out what's missing, or asks things like "what's missing from this checkout," "does this cover everything it needs to," or "check this against the Login checklist." For open-ended feedback or a general design review instead of a systematic check, use the design-critique skill.
 license: MIT — see LICENSE
+compatibility: Needs outbound network access to checklist.design — required, not optional, since there's no fallback without a checklist to audit against — plus a way to see the design under review: an image already in the conversation, or a browser tool for a live URL or local dev server. Works in any Agent Skills-compatible tool; Claude Code's plugin install adds a bundled hook for reliable triggering.
+metadata:
+  version: "2.0.0"
+  author: "Checklist Design"
 ---
 
 # Checklist Audit
@@ -21,12 +25,12 @@ Before auditing, work out what you're actually assessing, and say so at the star
 An audit needs a checklist to audit against — unlike a general critique, there's no generic fallback here.
 
 1. **If the person names a checklist** ("audit this against Login," "check it against Permissions"), use that. Fetch the catalog (`GET https://www.checklist.design/api/checklists/grouped`) to resolve the name to its slug and category if they didn't give you those directly.
-2. **If they didn't name one**, fetch the catalog and compare what you're looking at against the names and descriptions, the same way the critique skill does. Pick the checklist that plausibly applies.
+2. **If they didn't name one**, fetch the catalog and compare what you're looking at against the names and descriptions, the same way the design-critique skill does. Pick the checklist that plausibly applies.
 3. **If more than one clearly applies** (a settings screen with a permissions section, say), audit against each, kept clearly separate — don't blend two checklists' items into one list.
 4. **If nothing matches well and nothing was named**, say so plainly and name the closest candidates from the catalog instead of forcing a weak match or picking one silently.
 5. Once you've picked, fetch its items: `GET https://www.checklist.design/api/checklists/by-slug?slug={slug}&category={category-slug}`.
 
-If you have no way to make a network request in this environment, say that plainly too — an audit can't run without the checklist to audit against, so this isn't something to quietly skip the way the critique skill's optional grounding is.
+If you have no way to make a network request in this environment, say that plainly too — an audit can't run without the checklist to audit against, so this isn't something to quietly skip the way the design-critique skill's optional grounding is.
 
 ## Judging each item
 
@@ -70,5 +74,5 @@ When used conversationally, don't dump a table. Group it in prose the way you'd 
 ## Accuracy
 
 - A "not needed" call needs a real reason, not just an absence you'd rather not flag — either a specific alternative item that covers it, or a specific reason it doesn't apply to this product. If you can't articulate why it doesn't matter, it's "missing," not "not needed."
-- Respect standard UI patterns as a factor in "not needed" calls the same way the critique skill does — don't invent a gap around something that's a deliberate, conventional choice.
+- Respect standard UI patterns as a factor in "not needed" calls the same way the design-critique skill does — don't invent a gap around something that's a deliberate, conventional choice.
 - If most of a checklist reads "not needed" because the product takes a genuinely different approach to the whole category (like a passwordless product against a password-oriented checklist), say that plainly up front instead of working through seven near-identical "not needed" calls one by one.
