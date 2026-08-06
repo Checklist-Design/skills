@@ -26,10 +26,10 @@ State plainly what you ended up assessing — e.g. "Reviewing the screenshot you
 
 Once you know what you're looking at, check whether any of Checklist Design's own checklists apply to it. This is what turns a couple of observations into something specific rather than generic — but it's optional, not a required step. If it doesn't work, the critique still stands fine without it.
 
-1. Fetch the catalog: `GET https://www.checklist.design/api/checklists/grouped`. No login, no key. It returns every published checklist with a name, slug, description, and category. If you have no way to make a network request in this environment, skip this whole section and critique normally — don't mention that you skipped it.
+1. Fetch the catalog: `GET https://www.checklist.design/api/checklists/catalog`. No login, no key. It returns every published checklist as a flat list with a name, slug, description, category, and categorySlug. If you have no way to make a network request in this environment, skip this whole section and critique normally — don't mention that you skipped it.
 2. Compare what you're reviewing against the catalog's names and descriptions, and pick whichever checklists plausibly apply. Often one, sometimes two or three — a settings screen with a permissions section can reasonably match both a "Settings" and a "Permissions" checklist. If nothing matches well, don't force one — move on without citing anything.
 3. If the request narrows scope ("skip components," "just the layout"), respect that when picking — don't pull in a checklist that's about something the person just said not to look at.
-4. For each checklist picked, fetch its items: `GET https://www.checklist.design/api/checklists/by-slug?slug={slug}&category={category-slug}`, using the `slug` and the checklist's category slug from the catalog response.
+4. For each checklist picked, fetch its items: `GET https://www.checklist.design/api/checklists/detail?slug={slug}&category={categorySlug}`, using the `slug` and `categorySlug` from the catalog response.
 5. Use specific items to back up a strength or consideration you were already going to raise — don't invent a new point just because a matching item exists. When you cite one, name it in plain language ("the Permissions checklist calls this out") and link to the page where natural: `https://www.checklist.design/{category-slug}/{checklist-slug}`.
 6. Mention which checklist(s) you checked against in one short line, not a formal list — e.g. "Checked this against the Settings and Permissions checklists."
 
