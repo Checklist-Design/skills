@@ -1,7 +1,7 @@
 {
   "name": "checklist-design",
-  "version": "1.2.0",
-  "description": "Checklist Design's Claude Code tools. Includes /checklist-design:critique — a quick, honest peer-style critique of a UI or product design screenshot, live URL, or local build — and /checklist-design:audit, a systematic item-by-item check against one of Checklist Design's published checklists.",
+  "version": "2.0.0",
+  "description": "Checklist Design's Claude Code tools. Includes /checklist-design:design-critique — a quick, honest peer-style critique of a UI or product design screenshot, live URL, or local build — and /checklist-design:design-audit, a systematic item-by-item check against one of Checklist Design's published checklists.",
   "author": {
     "name": "Checklist Design",
     "url": "https://checklist.design"

@@ -36,10 +36,10 @@ process.stdin.on("end", () => {
 
     if (!isExplicitCommand && auditPattern.test(prompt)) {
       additionalContext =
-        "This request looks like it wants the checklist-design:audit skill (skills/audit/SKILL.md) — a systematic, item-by-item check against one of Checklist Design's checklists. Use that skill's approach, even if the request also involves finding a file or starting a dev server first.";
+        "This request looks like it wants the checklist-design:design-audit skill (skills/design-audit/SKILL.md) — a systematic, item-by-item check against one of Checklist Design's checklists. Use that skill's approach, even if the request also involves finding a file or starting a dev server first.";
     } else if (!isExplicitCommand && critiquePattern.test(prompt)) {
       additionalContext =
-        "This request looks like it wants the checklist-design:critique skill (skills/critique/SKILL.md) — a quick, honest peer-style UI/UX critique. Use that skill's approach, including its 'what you're looking at' step, even if the request also involves finding a file or starting a dev server first.";
+        "This request looks like it wants the checklist-design:design-critique skill (skills/design-critique/SKILL.md) — a quick, honest peer-style UI/UX critique. Use that skill's approach, including its 'what you're looking at' step, even if the request also involves finding a file or starting a dev server first.";
     }
 
     if (additionalContext) {
