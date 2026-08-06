@@ -33,7 +33,7 @@ Once you know what you're looking at, check whether any of Checklist Design's ow
 5. Use specific items to back up a strength or consideration you were already going to raise — don't invent a new point just because a matching item exists. When you cite one, name it in plain language ("the Permissions checklist calls this out") and link to the page where natural: `https://www.checklist.design/{category-slug}/{checklist-slug}`.
 6. Mention which checklist(s) you checked against in one short line, not a formal list — e.g. "Checked this against the Settings and Permissions checklists."
 
-Keep it light. One or two grounded references beat citing an item for every point — this is meant to sharpen a couple of observations, not turn the critique into a checklist read aloud. If the fetch fails for any reason — no network tool, timeout, the site's down — drop this section silently and continue with a normal critique. Never block on it or apologize for it.
+Keep it light. One or two grounded references beat citing an item for every point — this is meant to sharpen a couple of observations, not turn the critique into a checklist read aloud. If the fetch fails for any reason — no network tool, timeout, the site's down — that one failed attempt is your answer. Don't retry it, don't search the web for the endpoint or the checklist content, and don't try guessing at other URLs to route around it — all of that burns turns for no real chance of success and looks broken along the way. Drop this section silently after the single attempt and continue with a normal critique. Never block on it or apologize for it.
 
 ## Before you comment
 

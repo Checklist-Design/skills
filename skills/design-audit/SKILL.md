@@ -30,7 +30,7 @@ An audit needs a checklist to audit against — unlike a general critique, there
 4. **If nothing matches well and nothing was named**, say so plainly and name the closest candidates from the catalog instead of forcing a weak match or picking one silently.
 5. Once you've picked, fetch its items: `GET https://www.checklist.design/api/checklists/by-slug?slug={slug}&category={category-slug}`.
 
-If you have no way to make a network request in this environment, say that plainly too — an audit can't run without the checklist to audit against, so this isn't something to quietly skip the way the design-critique skill's optional grounding is.
+If you have no way to make a network request in this environment, say that plainly too — an audit can't run without the checklist to audit against, so this isn't something to quietly skip the way the design-critique skill's optional grounding is. And if a fetch attempt fails rather than being unavailable outright, treat that one failure as your answer: don't retry it, don't search the web for the endpoint or the checklist content, and don't try guessing at other URLs. Say plainly that you couldn't reach the checklist right now, rather than burning several turns looking for a way around it first.
 
 ## Judging each item
 
