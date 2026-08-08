@@ -148,7 +148,9 @@ For `design-critique`, this grounding is an enhancement: when a screen clearly m
 
 For `design-audit`, it's the whole mechanism — the point is checking against a specific checklist, item by item.
 
-**Keeping the bundle current:** because the content is bundled rather than fetched, new checklists published on checklist.design don't appear until the bundle is regenerated and a new version released. Maintainers: run `node scripts/build-reference-bundle.mjs`, commit the result, and cut a GitHub release.
+**Keeping the bundle current:** because the content is bundled rather than fetched, new checklists published on checklist.design reach users when the bundle is regenerated and a new version released. That's automated — a scheduled GitHub Action ([`refresh-checklists.yml`](.github/workflows/refresh-checklists.yml)) rebuilds the bundle daily, and only commits and releases when the live content has actually changed. It can also be triggered on demand from the Actions tab, or by the website when a checklist is published.
+
+Maintainers can also run it by hand: `node scripts/build-reference-bundle.mjs`, then commit and release.
 
 ## What makes this different
 

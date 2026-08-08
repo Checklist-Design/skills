@@ -1,6 +1,6 @@
 # Checklist Design — checklist index
 
-97 checklists. Generated 2026-08-08 from https://www.checklist.design.
+97 checklists, from https://www.checklist.design.
 
 Find the checklist(s) matching the screen under review, then read the matching
 file in `references/checklists/` for its full items. The file name is given in

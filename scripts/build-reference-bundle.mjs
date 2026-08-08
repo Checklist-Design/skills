@@ -78,10 +78,14 @@ function renderIndex(entries) {
     byCategory.get(checklist.category).push(checklist)
   }
 
+  // Deliberately no generated-on date: this output must be byte-identical
+  // when the content hasn't changed, or the automated refresh workflow sees
+  // a diff every run and cuts an empty release every day. Release history
+  // is where "when was this generated" actually lives.
   const lines = [
     '# Checklist Design — checklist index',
     '',
-    `${entries.length} checklists. Generated ${new Date().toISOString().slice(0, 10)} from ${BASE}.`,
+    `${entries.length} checklists, from ${BASE}.`,
     '',
     'Find the checklist(s) matching the screen under review, then read the matching',
     'file in `references/checklists/` for its full items. The file name is given in',
