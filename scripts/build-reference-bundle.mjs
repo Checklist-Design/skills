@@ -18,7 +18,7 @@
 // — `npx skills add` copies them independently), and .agents/skills/ mirrors
 // are refreshed too.
 
-import { writeFile, mkdir, rm, cp } from 'node:fs/promises'
+import { readFile, writeFile, mkdir, rm, cp } from 'node:fs/promises'
 import { join } from 'node:path'
 
 const BASE = 'https://www.checklist.design'
@@ -122,12 +122,29 @@ console.log(`Bundling ${entries.length} checklists (${skipped} skipped: no items
 
 const index = renderIndex(entries)
 
+// scripts/bump-version.mjs appends a "_Bundled content: vX, date._" stamp to
+// index.md, and only runs when content genuinely changed. Carry any existing
+// stamp through untouched — otherwise regenerating would strip it, the
+// refresh workflow would read that as a change, and it would cut an empty
+// release every single day.
+async function existingStamp(path) {
+  try {
+    const match = (await readFile(path, 'utf8')).match(/\n(_Bundled content: .*_)\n/)
+    return match ? `\n${match[1]}\n` : ''
+  } catch {
+    return '' // no bundle yet — first run
+  }
+}
+
 for (const skill of SKILLS) {
   const refDir = join('skills', skill, 'references')
+  const indexPath = join(refDir, 'index.md')
+  const stamp = await existingStamp(indexPath)
+
   await rm(refDir, { recursive: true, force: true })
   await mkdir(join(refDir, 'checklists'), { recursive: true })
 
-  await writeFile(join(refDir, 'index.md'), index)
+  await writeFile(indexPath, stamp ? `${index.trimEnd()}\n${stamp}` : index)
   for (const { checklist, items } of entries) {
     await writeFile(join(refDir, 'checklists', fileNameFor(checklist)), renderChecklist(checklist, items))
   }

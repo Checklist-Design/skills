@@ -49,4 +49,19 @@ for (const skill of SKILLS) {
   }
 }
 
+// Stamp freshness into the bundled index here rather than in the build
+// script. The build script's output has to be byte-identical when nothing
+// changed, or the refresh workflow sees a diff every run and cuts an empty
+// release daily. This script only runs when content actually changed, so
+// the stamp moves exactly when it should.
+const stamp = `_Bundled content: v${next}, ${new Date().toISOString().slice(0, 10)}._`
+for (const skill of SKILLS) {
+  for (const dir of [`skills/${skill}`, `.agents/skills/${skill}`]) {
+    const path = `${dir}/references/index.md`
+    const text = await readFile(path, 'utf8')
+    const withoutOldStamp = text.replace(/\n_Bundled content: .*_\n/, '\n')
+    await writeFile(path, `${withoutOldStamp.trimEnd()}\n\n${stamp}\n`)
+  }
+}
+
 console.log(next)
