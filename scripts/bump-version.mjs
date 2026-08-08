@@ -43,9 +43,13 @@ for (const skill of SKILLS) {
   for (const dir of [`skills/${skill}`, `.agents/skills/${skill}`]) {
     const path = `${dir}/SKILL.md`
     const text = await readFile(path, 'utf8')
-    const updated = text.replace(/^(\s*version:\s*)"[^"]*"/m, `$1"${next}"`)
-    if (updated === text) throw new Error(`No metadata.version found to bump in ${path}`)
-    await writeFile(path, updated)
+    // Check the field exists separately from whether it changed — re-running
+    // with the version already set is legitimate (a retry, or stamping the
+    // bundle without a bump) and must not look like a missing field.
+    if (!/^\s*version:\s*"[^"]*"/m.test(text)) {
+      throw new Error(`No metadata.version found to bump in ${path}`)
+    }
+    await writeFile(path, text.replace(/^(\s*version:\s*)"[^"]*"/m, `$1"${next}"`))
   }
 }
 
