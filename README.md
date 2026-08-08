@@ -142,13 +142,15 @@ If you update the plugin and the hook doesn't seem to be firing, run `/reload-pl
 
 ## Grounded in Checklist Design's own checklists
 
-Both skills ship with all of [Checklist Design's](https://checklist.design) published checklists bundled inside them as reference files — every checklist, every item, about 130KB. Matching a screen to a checklist and reading its items are both local file reads. No API call, no network, no failure mode.
+Both skills ship with all of [Checklist Design's](https://checklist.design) published checklists bundled inside them as reference files — every checklist, every item, about 130KB.
+
+They try the live checklist.design API first, so newly published checklists show up straight away, and fall back to the bundled copies the moment that doesn't work. One attempt, no retrying, no searching around. The practical effect is that grounding always works — offline, behind a firewall, or in a tool whose fetch is unreliable — and it's simply fresher when the network cooperates.
 
 For `design-critique`, this grounding is an enhancement: when a screen clearly matches a checklist, it checks itself against that checklist's specific items and links back to it, instead of relying only on general design heuristics. If nothing matches well, it just runs as a normal critique.
 
 For `design-audit`, it's the whole mechanism — the point is checking against a specific checklist, item by item.
 
-**Keeping the bundle current:** because the content is bundled rather than fetched, new checklists published on checklist.design reach users when the bundle is regenerated and a new version released. That's automated — a scheduled GitHub Action ([`refresh-checklists.yml`](.github/workflows/refresh-checklists.yml)) rebuilds the bundle daily, and only commits and releases when the live content has actually changed. It can also be triggered on demand from the Actions tab, or by the website when a checklist is published.
+**Keeping the bundle current:** the bundled copies are the safety net, so they still need to track the site. That's automated — a scheduled GitHub Action ([`refresh-checklists.yml`](.github/workflows/refresh-checklists.yml)) rebuilds the bundle daily, and only commits and releases when the live content has actually changed. It can also be triggered on demand from the Actions tab, or by the website when a checklist is published.
 
 Maintainers can also run it by hand: `node scripts/build-reference-bundle.mjs`, then commit and release.
 

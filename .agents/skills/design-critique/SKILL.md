@@ -2,7 +2,7 @@
 name: design-critique
 description: Quick, honest peer-style critique of a UI or product design — a screenshot, a live URL, or a page someone is building locally — evaluating purpose, hierarchy, layout, typography, color, accessibility, interaction, and polish, in the voice of a designer leaving a comment for a colleague whose work they respect. Use when the user shares a screenshot or URL, or asks for feedback, a design review, or a critique on a page, screen, or interface they're building or reviewing — phrasings like "does this look right," "roast my landing page," "is this accessible," "what do you think of this UI," or "review my dashboard." For a systematic, item-by-item check against one of Checklist Design's checklists instead of an open opinion, use the design-audit skill.
 license: MIT — see LICENSE
-compatibility: Needs no network access — all checklist content is bundled in references/. Needs a way to see the design under review: an image already in the conversation, or a browser tool able to capture a live URL or local dev server. Works in any Agent Skills-compatible tool. In Claude Code, install as the full plugin for a bundled hook that improves trigger reliability.
+compatibility: Works with no network access — all checklist content is bundled in references/, and the live checklist.design API is used only when reachable, for fresher content. Needs a way to see the design under review: an image already in the conversation, or a browser tool able to capture a live URL or local dev server. Works in any Agent Skills-compatible tool. In Claude Code, install as the full plugin for a bundled hook that improves trigger reliability.
 metadata:
   version: "2.1.0"
   author: "Checklist Design"
@@ -26,18 +26,29 @@ State plainly what you ended up assessing — e.g. "Reviewing the screenshot you
 
 Once you know what you're looking at, check whether any of Checklist Design's own checklists apply to it. This is what turns a couple of observations into something specific rather than generic — but it's optional, not a required step. If it doesn't work, the critique still stands fine without it.
 
-Every checklist ships inside this skill as a file. There is nothing to fetch and no network involved — read the files.
+Every checklist ships inside this skill as files, so this always works offline. A live copy is also available, which is fresher — newly published checklists appear there before they're bundled here. Prefer live, fall back to bundled, and never spend more than one attempt finding out which.
 
-1. Read `references/index.md` (alongside this SKILL.md). It lists all Checklist Design checklists by category, each with a description and its reference file name.
-2. Compare what you're reviewing against those names and descriptions, and pick whichever checklists plausibly apply. Often one, sometimes two or three — a settings screen with a permissions section can reasonably match both a "Settings" and a "Permissions" checklist. If nothing matches well, don't force one — move on without citing anything.
-3. If the request narrows scope ("skip components," "just the layout"), respect that when picking — don't pull in a checklist that's about something the person just said not to look at.
-4. For each checklist picked, read its file: `references/checklists/{file-name}.md`, using the file name given in the index. Each file carries the checklist's full items and its page URL.
-5. Use specific items to back up a strength or consideration you were already going to raise — don't invent a new point just because a matching item exists. When you cite one, name it in plain language ("the Permissions checklist calls this out") and link to the page where natural — the URL is at the top of each checklist file.
-6. Mention which checklist(s) you checked against in one short line, not a formal list — e.g. "Checked this against the Settings and Permissions checklists."
+**Getting the checklist list**
+
+1. Try `GET https://www.checklist.design/api/checklists/catalog` — one attempt. No login, no key. It returns every published checklist with a name, slug, description, category, and categorySlug.
+2. Judge that attempt by whether you actually got content back, not by what the tool called it. If a response body arrived, use it, even if the tool also reported an error, a warning, or an unexpected content type alongside it. Some fetch tools flag a response as failed while still handing you the complete body.
+3. If no usable content came back, read `references/index.md` (alongside this SKILL.md) instead. It carries the same list, bundled with the skill, and is always present. Move straight there — see "when the fetch doesn't work" below.
+
+**Picking and reading checklists**
+
+4. Compare what you're reviewing against those names and descriptions, and pick whichever checklists plausibly apply. Often one, sometimes two or three — a settings screen with a permissions section can reasonably match both a "Settings" and a "Permissions" checklist. If nothing matches well, don't force one — move on without citing anything.
+5. If the request narrows scope ("skip components," "just the layout"), respect that when picking — don't pull in a checklist that's about something the person just said not to look at.
+6. For each checklist picked, get its items the same way: try `GET https://www.checklist.design/api/checklists/detail?slug={slug}&category={categorySlug}` once, applying the same "did content arrive" rule; otherwise read `references/checklists/{file-name}.md`, using the file name given in the bundled index.
+7. Use specific items to back up a strength or consideration you were already going to raise — don't invent a new point just because a matching item exists. When you cite one, name it in plain language ("the Permissions checklist calls this out") and link to the page where natural: `https://www.checklist.design/{categorySlug}/{slug}`.
+8. Mention which checklist(s) you checked against in one short line, not a formal list — e.g. "Checked this against the Settings and Permissions checklists." Don't narrate which source the content came from; the person doesn't need to know.
 
 Keep it light. One or two grounded references beat citing an item for every point — this is meant to sharpen a couple of observations, not turn the critique into a checklist read aloud.
 
-Never fetch checklist content from the web, and never web-search for it. The bundled files are the authoritative source and they are always present. If you somehow can't read them, just give a normal critique without citations — don't mention it, don't go looking elsewhere, and don't substitute checklist content from any other site.
+**When the fetch doesn't work**
+
+Fall to the bundled files immediately and carry on. Don't retry the request, don't try other URLs, and never web-search for checklist content — checklist material found elsewhere is not Checklist Design's and citing it as though it were is worse than citing nothing. The bundled files are always there, so a failed fetch costs nothing and isn't worth a word of explanation.
+
+The one exception: if the person is explicitly asking you to investigate a fetch problem, that's a debugging request, not a critique — then you should absolutely dig in, retry, and report exactly what the tool returned.
 
 ## Before you comment
 
