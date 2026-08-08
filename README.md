@@ -10,7 +10,7 @@ Built to the open [Agent Skills](https://agentskills.io/) standard, so it works 
 
 ## What these need to work
 
-Both skills need two things: outbound network access to `checklist.design` (to fetch the relevant checklist content — this is what grounds the output in specifics instead of generic advice), and a way to actually see the design being reviewed.
+Both skills need one thing: a way to actually see the design being reviewed. The checklist content itself is bundled inside the skills — no network access, no API, no setup.
 
 "A way to see it" means one of:
 - **An image already in the conversation** — paste a screenshot in and ask.
@@ -25,7 +25,7 @@ Both skills need two things: outbound network access to `checklist.design` (to f
 
   One-time, optional setup — if you've already got a browser tool configured for other things, there's nothing extra to do.
 
-Without either, `design-critique` will ask you for a screenshot rather than guess. `design-audit` needs it even more directly — there's no useful audit without something to check against a checklist.
+Without either, both skills will ask you for a screenshot rather than guess at how something renders.
 
 ## Installation
 
@@ -142,13 +142,13 @@ If you update the plugin and the hook doesn't seem to be firing, run `/reload-pl
 
 ## Grounded in Checklist Design's own checklists
 
-Both skills pull from [Checklist Design's](https://checklist.design) 100+ published checklists, live, rather than having them baked in — so new checklists become available the moment they're published on the site, with nothing to update here.
+Both skills ship with all of [Checklist Design's](https://checklist.design) published checklists bundled inside them as reference files — every checklist, every item, about 130KB. Matching a screen to a checklist and reading its items are both local file reads. No API call, no network, no failure mode.
 
-For `design-critique`, this is an enhancement: when a screen clearly matches a checklist, it checks itself against that checklist's specific items and links back to it, instead of relying only on general design heuristics. If nothing matches well, it just runs as a normal critique.
+For `design-critique`, this grounding is an enhancement: when a screen clearly matches a checklist, it checks itself against that checklist's specific items and links back to it, instead of relying only on general design heuristics. If nothing matches well, it just runs as a normal critique.
 
-For `design-audit`, this is the whole mechanism — there's no generic fallback, since the point is checking against a specific checklist.
+For `design-audit`, it's the whole mechanism — the point is checking against a specific checklist, item by item.
 
-This is what the network access noted at the top of this README is for.
+**Keeping the bundle current:** because the content is bundled rather than fetched, new checklists published on checklist.design don't appear until the bundle is regenerated and a new version released. Maintainers: run `node scripts/build-reference-bundle.mjs`, commit the result, and cut a GitHub release.
 
 ## What makes this different
 
