@@ -2,9 +2,9 @@
 name: design-audit
 description: Systematic audit of a UI or product design against one of Checklist Design's published checklists — goes through every item on the checklist, marks it present, missing, not needed, or unclear from what's shown, and explains which gaps actually matter. This is a completeness check, not a general design opinion. Use when the user asks to audit a screen, check it against a checklist, verify coverage, find out what's missing, or asks things like "what's missing from this checkout," "does this cover everything it needs to," or "check this against the Login checklist." For open-ended feedback or a general design review instead of a systematic check, use the design-critique skill.
 license: MIT — see LICENSE
-compatibility: Needs outbound network access to checklist.design — required, not optional, since there's no fallback without a checklist to audit against — plus a way to see the design under review: an image already in the conversation, or a browser tool for a live URL or local dev server. Works in any Agent Skills-compatible tool; Claude Code's plugin install adds a bundled hook for reliable triggering.
+compatibility: Needs no network access — all checklist content is bundled in references/ and read locally. Needs a way to see the design under review: an image already in the conversation, or a browser tool for a live URL or local dev server. Works in any Agent Skills-compatible tool; Claude Code's plugin install adds a bundled hook for reliable triggering.
 metadata:
-  version: "2.0.0"
+  version: "2.1.0"
   author: "Checklist Design"
 ---
 
@@ -24,13 +24,22 @@ Before auditing, work out what you're actually assessing, and say so at the star
 
 An audit needs a checklist to audit against — unlike a general critique, there's no generic fallback here.
 
-1. **If the person names a checklist** ("audit this against Login," "check it against Permissions"), use that. Fetch the catalog (`GET https://www.checklist.design/api/checklists/catalog`) to resolve the name to its slug and categorySlug if they didn't give you those directly.
-2. **If they didn't name one**, fetch the catalog and compare what you're looking at against the names and descriptions, the same way the design-critique skill does. Pick the checklist that plausibly applies.
-3. **If more than one clearly applies** (a settings screen with a permissions section, say), audit against each, kept clearly separate — don't blend two checklists' items into one list.
-4. **If nothing matches well and nothing was named**, say so plainly and name the closest candidates from the catalog instead of forcing a weak match or picking one silently.
-5. Once you've picked, fetch its items: `GET https://www.checklist.design/api/checklists/detail?slug={slug}&category={categorySlug}`.
+Every checklist ships inside this skill as files. Read them — there is nothing to fetch.
 
-If you have no way to make a network request in this environment, say that plainly too — an audit can't run without the checklist to audit against, so this isn't something to quietly skip the way the design-critique skill's optional grounding is. And if a fetch attempt fails rather than being unavailable outright, treat that one failure as your answer: don't retry it, don't search the web for the endpoint or the checklist content, and don't try guessing at other URLs. Say plainly that you couldn't reach the checklist right now, rather than burning several turns looking for a way around it first.
+1. Read `references/index.md` (alongside this SKILL.md). It lists all Checklist Design checklists by category, each with a description and its reference file name.
+2. **If the person names a checklist** ("audit this against Login," "check it against Permissions"), find it in the index. Note that some names appear in more than one category — a "Login" exists for Website, Web app, and Mobile app, and their items differ. Pick the category matching what you're actually looking at, and say which one you used.
+3. **If they didn't name one**, compare what you're looking at against the index's names and descriptions, the same way the design-critique skill does. Pick the checklist that plausibly applies.
+4. **If more than one clearly applies** (a settings screen with a permissions section, say), audit against each, kept clearly separate — don't blend two checklists' items into one list.
+5. **If nothing matches well and nothing was named**, say so plainly and name the closest candidates from the index instead of forcing a weak match or picking one silently.
+6. Once you've picked, read its file: `references/checklists/{file-name}.md`, using the file name given in the index. Each file carries the checklist's full items and its page URL.
+
+**Don't try to fetch this content from the web, and don't web-search for it.**
+
+This isn't a preference, and earlier versions of this skill got it wrong. Claude's web fetch tool can only retrieve URLs that already appear in the conversation — from the person's own message, or from earlier search results. A URL that exists only here, in skill instructions, doesn't qualify, so a fetch attempt can't succeed and only produces a visible error. The bundled files are the whole point: they're always present, they're faster, and they work offline. (Maintainers keep them current — see the repo README.)
+
+If you genuinely can't read the bundled files, say so plainly rather than substituting checklist content from anywhere else — auditing against some other site's checklist, or a search snippet, is worse than not auditing at all.
+
+The one exception: if the person is explicitly asking you to investigate a fetch or connectivity problem, that's a debugging request rather than an audit — then dig in and report exactly what the tool returned.
 
 ## Judging each item
 

@@ -1,0 +1,76 @@
+name: Refresh bundled checklists
+
+# Checklist content is bundled into the skills rather than fetched at runtime
+# (see scripts/build-reference-bundle.mjs for why). That means new checklists
+# published on checklist.design don't reach users until the bundle is
+# regenerated and a release is cut — and a manual chore in a separate repo
+# from where checklists actually get published is a chore that quietly stops
+# happening. So it runs here instead of relying on anyone remembering.
+#
+# Runs daily, and can be triggered immediately:
+#   - manually, from the Actions tab (workflow_dispatch)
+#   - by the website, when a checklist is published (repository_dispatch)
+#
+# Does nothing at all when the live content matches what's already bundled,
+# so quiet days cost nothing and don't produce empty releases.
+
+on:
+  schedule:
+    - cron: '0 6 * * *' # daily, 06:00 UTC
+  workflow_dispatch:
+  repository_dispatch:
+    types: [checklists-updated]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-checklists
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Rebuild bundle from live checklist content
+        run: node scripts/build-reference-bundle.mjs
+
+      - name: Check for content changes
+        id: diff
+        run: |
+          if git diff --quiet -- skills .agents; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Bundle already matches live content — nothing to do."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            git diff --stat -- skills .agents
+          fi
+
+      - name: Bump version
+        id: bump
+        if: steps.diff.outputs.changed == 'true'
+        run: echo "version=$(node scripts/bump-version.mjs)" >> "$GITHUB_OUTPUT"
+
+      - name: Commit and release
+        if: steps.diff.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.bump.outputs.version }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Refresh bundled checklists (v${VERSION})
+
+          Automated: regenerated from checklist.design's published content.
+          "
+          git push
+          gh release create "v${VERSION}" \
+            --title "v${VERSION}" \
+            --notes "Automated refresh of bundled checklist content from checklist.design. No skill logic changes."
