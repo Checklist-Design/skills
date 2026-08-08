@@ -144,7 +144,9 @@ If you update the plugin and the hook doesn't seem to be firing, run `/reload-pl
 
 Both skills ship with all of [Checklist Design's](https://checklist.design) published checklists bundled inside them as reference files — every checklist, every item, about 130KB.
 
-They try the live checklist.design API first, so newly published checklists show up straight away, and fall back to the bundled copies the moment that doesn't work. One attempt, no retrying, no searching around. The practical effect is that grounding always works — offline, behind a firewall, or in a tool whose fetch is unreliable — and it's simply fresher when the network cooperates.
+Matching a screen to a checklist and reading its items are both local file reads. No API call, no network, no failure mode.
+
+This is deliberate, and it's the reason an earlier fetch-based version was abandoned: Claude's web fetch tool [can only retrieve URLs that already appear in the conversation](https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-fetch-tool) — a user's message, or earlier search results. A URL living only in a skill's own instructions doesn't qualify, so a skill fetching its own API is blocked by design, not by a bug. Bundling reference data is also the pattern [Anthropic's own skills](https://github.com/anthropics/skills) use.
 
 For `design-critique`, this grounding is an enhancement: when a screen clearly matches a checklist, it checks itself against that checklist's specific items and links back to it, instead of relying only on general design heuristics. If nothing matches well, it just runs as a normal critique.
 
