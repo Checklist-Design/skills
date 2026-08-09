@@ -2,7 +2,7 @@
 name: design-audit
 description: Systematic audit of a UI or product design against one of Checklist Design's published checklists — goes through every item on the checklist, marks it present, missing, not needed, or unclear from what's shown, and explains which gaps actually matter. This is a completeness check, not a general design opinion. Use when the user asks to audit a screen, check it against a checklist, verify coverage, find out what's missing, or asks things like "what's missing from this checkout," "does this cover everything it needs to," or "check this against the Login checklist." For open-ended feedback or a general design review instead of a systematic check, use the design-critique skill.
 license: MIT — see LICENSE
-compatibility: Needs no network access — all checklist content is bundled in references/ and read locally. Needs a way to see the design under review: an image already in the conversation, or a browser tool for a live URL or local dev server. Works in any Agent Skills-compatible tool; Claude Code's plugin install adds a bundled hook for reliable triggering.
+compatibility: "Needs no network access — all checklist content is bundled in references/ and read locally. Needs a way to see the design under review: an image already in the conversation, or a browser tool for a live URL or local dev server. Works in any Agent Skills-compatible tool; Claude Code's plugin install adds a bundled hook for reliable triggering."
 metadata:
   version: "2.1.0"
   author: "Checklist Design"
