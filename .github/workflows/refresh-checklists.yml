@@ -25,7 +25,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: version-and-release
+  group: refresh-checklists
   cancel-in-progress: false
 
 jobs:

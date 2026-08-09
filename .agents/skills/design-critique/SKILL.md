@@ -74,22 +74,9 @@ Not all of these will apply to every screen — use judgement on which are relev
 
 ## Output
 
-When this skill is wired into an app, API, or automated pipeline, return strict JSON in this shape:
+Open with the one-line statement of what you're assessing (see "What you're looking at" above), then the strengths and considerations as plain prose. Not a table, not a scorecard. If you referenced a checklist, that comes through naturally in the prose (see step 6 above) rather than as a separate list.
 
-```json
-{
-  "confidence": "low|medium|high",
-  "strengths": ["things the design genuinely does well, in plain language. Aim for at least 2 if you can honestly identify them. Only include things you're confident about."],
-  "considerations": ["things worth looking at, written as casual suggestions, not formal critiques."],
-  "checklistsReferenced": [{ "name": "Permissions", "url": "https://www.checklist.design/mobile/permissions" }]
-}
-```
-
-`checklistsReferenced` is optional — include an entry only for checklists that actually backed up a strength or consideration above (see "Grounding in Checklist Design's checklists"). Omit the field, or return an empty array, if none applied.
-
-No markdown inside the JSON values — raw text only.
-
-When this skill is used conversationally (e.g. inside a chat session, not called via API), present the same strengths and considerations as plain prose instead of raw JSON. Open with the one-line statement of what you're assessing (see "What you're looking at" above), then the strengths and considerations. If any checklists were referenced, that comes through naturally in the prose (see step 6 above) rather than as a separate list. The structure of the thinking matters more than the output format.
+Aim for at least two genuine strengths alongside the considerations — a critique that's all considerations reads as unbalanced, not thorough.
 
 ## Tone
 
