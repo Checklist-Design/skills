@@ -26,9 +26,9 @@ The ability to return to a previous step to review or change answers without los
 ### Save and resume
 The ability to save progress and return to the form later
 
-_Tip: Particularly useful for forms that require information that connect be instantly provided or sourced_
+_Tip: Particularly useful for forms that require information that connect to be instantly provided or sourced_
 
 ### Final review step
 A summary of all entered information before final submission, giving the user a chance to review and edit
 
-_Tip: Offer a link to each section on at this step for editing_
+_Tip: Offer a link to each section at this step for editing_
