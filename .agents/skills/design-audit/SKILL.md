@@ -4,7 +4,7 @@ description: Systematic audit of a UI or product design against one of Checklist
 license: MIT — see LICENSE
 compatibility: Needs no network access — all checklist content is bundled in references/ and read locally. Needs a way to see the design under review: an image already in the conversation, or a browser tool for a live URL or local dev server. Works in any Agent Skills-compatible tool; Claude Code's plugin install adds a bundled hook for reliable triggering.
 metadata:
-  version: "2.1.0"
+  version: "2.1.1"
   author: "Checklist Design"
 ---
 

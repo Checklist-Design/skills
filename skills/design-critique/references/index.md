@@ -115,4 +115,4 @@ backticks after each name.
 - **Blog** `website-blog.md` — A blog page aggregates and displays multiple articles or posts in a chronological order, typically showing previews, titles, publication dates, and categories. It provides easy navigation through pagination or infinite scroll, allowing users to browse and discover content.
 - **Sign up** `website-sign-up.md` — A sign up page enables new users to create an account by providing required information through a form. It guides users through the registration process, validates input data, and establishes their credentials for accessing restricted features or personalized content.
 
-_Bundled content: v2.1.0, 2026-08-08._
+_Bundled content: v2.1.1, 2026-08-09._
