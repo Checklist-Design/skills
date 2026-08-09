@@ -7,5 +7,19 @@
     "url": "https://checklist.design"
   },
   "homepage": "https://github.com/checklist-design/design-critique",
-  "license": "MIT"
+  "license": "MIT",
+  "skills": [
+    "./skills/design-critique",
+    "./skills/design-audit"
+  ],
+  "repository": "https://github.com/Checklist-Design/design-critique",
+  "keywords": [
+    "design",
+    "design-review",
+    "critique",
+    "ux",
+    "ui",
+    "accessibility",
+    "checklist"
+  ]
 }
