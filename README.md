@@ -1,6 +1,6 @@
 # Checklist Design — design review for AI coding agents
 
-[![skills.sh](https://skills.sh/b/checklist-design/design-critique)](https://skills.sh/checklist-design/design-critique)
+[![skills.sh](https://skills.sh/b/checklist-design/skills)](https://skills.sh/checklist-design/skills)
 
 Design review grounded in [Checklist Design's](https://checklist.design) 100+ published checklists, for Claude Code, Cursor, Codex, Gemini CLI and around twenty other tools.
 
@@ -38,13 +38,13 @@ Without either, it'll ask for a screenshot rather than guess at how something re
 From your project root:
 
 ```
-npx skills add checklist-design/design-critique
+npx skills add checklist-design/skills
 ```
 
 Add `-a` to target specific agents — the installer only auto-selects ones it detects, so a tool you have installed can otherwise be skipped. Common identifiers: `claude-code`, `cursor`, `codex`, `gemini`, `github-copilot`, `windsurf`, `cline`, `amp`, `antigravity`. For example:
 
 ```
-npx skills add checklist-design/design-critique -a claude-code -a cursor -a codex
+npx skills add checklist-design/skills -a claude-code -a cursor -a codex
 ```
 
 Verify with `npx skills list`. Cursor, Gemini CLI and Codex need no extra setup — they discover skills automatically.
@@ -60,7 +60,7 @@ The plugin install adds a `UserPromptSubmit` hook that improves how reliably pla
 Run these in a terminal — `/plugin` commands don't work in Desktop's prompt box:
 
 ```
-/plugin marketplace add checklist-design/design-critique
+/plugin marketplace add checklist-design/skills
 /plugin install checklist-design@checklist-design
 ```
 
