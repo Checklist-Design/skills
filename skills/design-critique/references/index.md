@@ -1,6 +1,6 @@
 # Checklist Design — checklist index
 
-111 checklists, from https://www.checklist.design.
+112 checklists, from https://www.checklist.design.
 
 Find the checklist(s) matching the screen under review, then read the matching
 file in `references/checklists/` for its full items. The file name is given in
@@ -11,6 +11,7 @@ backticks after each name.
 - **Tokens** `design-system-tokens.md` — The layer of a design system where defined variables are outlined across the platform to enable consistency, theming and alignment with code.
 - **Drawer** `design-system-drawer.md` — A drawer is a panel that slides in from the edge, overlaying content. It provides access to detailed information without completely navigating away from the current page.
 - **Typography** `design-system-typography.md` — The type layer of a design system that defines a scale, hierarchy, and set of text styles that is consistent, accessible, and expressive across the full range of product contexts
+- **Accessibility** `design-system-accessibility.md` — The accessibility foundation of a design system including the standards, tooling, and shared conventions that ensure every component and pattern is built inclusively from the start.
 - **Date Picker** `design-system-date-picker.md`
 - **Spacing / Grid** `design-system-spacing-and-grid.md` — The spatial layer of a design system, defining a consistent scale for spacing, a grid for layout, and the rules that make both feel deliberate and coherent across all surfaces.
 - **Color System** `design-system-color-system.md` — The color layer of a design system — defining a palette that is purposeful, accessible, themeable, and expressed as tokens rather than raw values.
@@ -55,7 +56,6 @@ backticks after each name.
 
 ## Mobile app
 
-- **Tab Bar Navigation** `mobile-tab-bar-navigation.md` — The persistent bottom navigation bar that gives users access to the top-level sections of the app
 - **In-App Notifications** `mobile-in-app-notifications.md` — The in-app feed of alerts, updates, and messages the user has received — distinct from system push notifications.
 - **Search** `mobile-search.md` — The search experience on mobile where keyboard handling and filtering results are unique to web.
 - **Billing** `mobile-billing.md` — Payment history, receipts, and everything related to how the user is charged.
@@ -71,6 +71,7 @@ backticks after each name.
 - **Splash Screen** `mobile-splash-screen.md` — The first screen a user sees when launching the mobile app and it initialises before transitioning to the home screen.
 - **Checkout** `mobile-checkout.md` — The payment flow on mobile optimised for native payment methods and the constraints of a small screen.
 - **Action Sheet** `mobile-action-sheet.md` — The sheet that slides up from the bottom of the screen to present options or confirmations — the mobile equivalent of a dropdown menu or modal dialog.
+- **Tab Bar Navigation** `mobile-tab-bar-navigation.md` — The persistent bottom navigation bar that gives users access to the top-level sections of the app
 - **Cart** `mobile-cart.md`
 - **Login** `mobile-login.md` — Everything a returning user needs to authenticate quickly and securely.
 - **Account** `mobile-account.md` — Private account settings like credentials, linked accounts, notifications, and destructive actions.
@@ -132,4 +133,4 @@ backticks after each name.
 - **Blog** `website-blog.md` — A blog page aggregates and displays multiple articles or posts in a chronological order, typically showing previews, titles, publication dates, and categories. It provides easy navigation through pagination or infinite scroll, allowing users to browse and discover content.
 - **Sign up** `website-sign-up.md` — A sign up page enables new users to create an account by providing required information through a form. It guides users through the registration process, validates input data, and establishes their credentials for accessing restricted features or personalized content.
 
-_Bundled content: v2.1.1, 2026-08-09._
+_Bundled content: v2.1.2, 2026-08-10._
