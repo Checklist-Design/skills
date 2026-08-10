@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Regenerates the bundled checklist reference files that both skills read.
+// Regenerates the bundled checklist reference files the skill reads.
 //
 // Why bundled rather than fetched at runtime: the skills originally fetched
 // checklist.design's API on every invocation. That made the core matching
@@ -14,15 +14,13 @@
 //
 //   node scripts/build-reference-bundle.mjs
 //
-// Both skills get identical copies (each skill folder must be self-contained
-// — `npx skills add` copies them independently), and .agents/skills/ mirrors
-// are refreshed too.
+// The .agents/skills/ mirror is refreshed too, so the two never drift.
 
 import { readFile, writeFile, mkdir, rm, cp } from 'node:fs/promises'
 import { join } from 'node:path'
 
 const BASE = 'https://www.checklist.design'
-const SKILLS = ['design-critique', 'design-audit']
+const SKILLS = ['checklist-design']
 
 async function getJSON(url) {
   const res = await fetch(url)
@@ -141,7 +139,10 @@ for (const skill of SKILLS) {
   const indexPath = join(refDir, 'index.md')
   const stamp = await existingStamp(indexPath)
 
-  await rm(refDir, { recursive: true, force: true })
+  // Only clear generated content. references/audit.md and critique.md are
+  // hand-written mode instructions living in the same directory — wiping the
+  // whole folder would delete the skill's actual behaviour.
+  await rm(join(refDir, 'checklists'), { recursive: true, force: true })
   await mkdir(join(refDir, 'checklists'), { recursive: true })
 
   await writeFile(indexPath, stamp ? `${index.trimEnd()}\n${stamp}` : index)

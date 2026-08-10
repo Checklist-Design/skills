@@ -8,7 +8,7 @@
 
 import { readFile, writeFile } from 'node:fs/promises'
 
-const SKILLS = ['design-critique', 'design-audit']
+const SKILLS = ['checklist-design']
 
 const pluginPath = '.claude-plugin/plugin.json'
 const marketplacePath = '.claude-plugin/marketplace.json'

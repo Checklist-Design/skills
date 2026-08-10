@@ -25,10 +25,10 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Skills CLI can discover both skills
+      - name: Skills CLI can discover the skill
         run: |
           # Strip ANSI colour codes before matching — the CLI colourises its
-          # output, so a plain grep for "Found 2 skills" silently fails against
+          # output, so a plain grep for "Found 1 skill" silently fails against
           # "Found \e[32m2\e[39m skills".
           out=$(npx -y skills@latest add . -l 2>&1 | sed 's/\x1b\[[0-9;]*m//g')
           echo "$out"
@@ -36,14 +36,14 @@ jobs:
             echo "::error::skills CLI could not parse one or more SKILL.md files"
             exit 1
           fi
-          if ! echo "$out" | grep -q "Found 2 skills"; then
-            echo "::error::expected the CLI to find exactly 2 skills"
+          if ! echo "$out" | grep -q "Found 1 skill"; then
+            echo "::error::expected the CLI to find exactly 1 skill"
             exit 1
           fi
 
       - name: skills/ and .agents/ mirrors are identical
         run: |
-          for s in design-critique design-audit; do
+          for s in checklist-design; do
             if ! diff -r "skills/$s" ".agents/skills/$s" > /dev/null; then
               echo "::error::skills/$s and .agents/skills/$s have drifted apart"
               diff -r "skills/$s" ".agents/skills/$s" | head -20

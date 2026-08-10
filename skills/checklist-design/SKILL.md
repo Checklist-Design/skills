@@ -1,0 +1,71 @@
+---
+name: checklist-design
+description: Design review grounded in Checklist Design's 100+ published checklists. Two modes — audit works through a matching checklist item by item and reports what's present, partially present or missing and whether each gap matters; critique gives quick, honest peer-style feedback on hierarchy, layout, typography, colour, accessibility, interaction and polish. Use when someone shares a UI screenshot, mockup, live URL or local build and wants a design review, feedback, an audit, a completeness check, or to know what's missing — phrasings like "does this look right," "roast my landing page," "is this accessible," "review my dashboard," "what's missing from this checkout," "does this cover everything," or "check this against the Login checklist." Covers websites, web apps, mobile apps, design system components and user flows.
+license: MIT — see LICENSE
+compatibility: "Needs no network access — all checklist content is bundled in references/ and read locally. Needs a way to see the design under review: an image already in the conversation, or a browser tool able to capture a live URL or local dev server. Works in any Agent Skills-compatible tool."
+user-invocable: true
+argument-hint: "[audit|critique] [target]"
+metadata:
+  version: "3.0.0"
+  author: "Checklist Design"
+---
+
+# Checklist Design
+
+Design review grounded in Checklist Design's own checklists. Two modes: **audit** for a systematic item-by-item check, **critique** for quick honest feedback. Work out which one is wanted, then follow that mode's reference file.
+
+## What you're looking at
+
+First, work out what you're actually assessing, and say so at the start of your response:
+
+1. **An image is already in the conversation** — a screenshot, a pasted mockup, a Figma export. Use it directly.
+2. **No image, but a URL or local address is mentioned** — a live site, or something running locally (e.g. `localhost:3000`). If a browser tool is available, navigate to it and capture a screenshot first. If the address isn't stated but is clearly implied, ask which URL or port rather than guessing.
+3. **No image, no URL, and no way to capture one** — don't work from markup or component code alone; a page can look fine in code and be visually broken, or the reverse. Ask for a screenshot instead of guessing at the rendered result.
+
+State plainly what you ended up assessing — "Reviewing the screenshot you shared," "Reviewing a capture of localhost:3000," or "I can't see a rendered version yet — could you share a screenshot?"
+
+## Finding the relevant checklist
+
+Every checklist ships inside this skill as files. Read them — there is nothing to fetch.
+
+1. Read `references/index.md`. It lists every Checklist Design checklist by category, each with a description and its reference file name.
+2. Compare what you're looking at against those names and descriptions. If the person named a checklist ("check this against Login"), find that one — note that some names appear in more than one category, and a "Login" for Website, Web app and Mobile app have different items. Pick the category matching what you're actually looking at.
+3. Read the matching file: `references/checklists/{file-name}.md`. Each carries the checklist's full items and its page URL.
+
+**Don't fetch this content from the web, and don't web-search for it.** Claude's web fetch tool can only retrieve URLs that already appear in the conversation — a URL that exists only here, in skill instructions, doesn't qualify, so an attempt can't succeed and only produces a visible error. The bundled files are always present, faster, and work offline. Checklist material found on other sites isn't Checklist Design's, and citing it as though it were is worse than citing nothing.
+
+(The exception: if the person is explicitly asking you to investigate a fetch or connectivity problem, that's a debugging request — dig in and report what the tool returned.)
+
+## Choosing the mode
+
+**If they named a mode** — `/checklist-design audit`, `/checklist-design critique`, or plain language like "audit this" or "just give me your thoughts" — use it. An explicit request always wins.
+
+**If they didn't**, decide from what you're looking at:
+
+- **A checklist clearly matches** → **audit**. Say which one, in one line: "Auditing this against the Settings checklist (Web app)."
+- **Nothing matches well** → **critique**. Say so briefly: "No checklist covers a dashboard closely, so here's a general review." Never dead-end on a missing checklist — the catalogue doesn't cover everything, and a useful review is always possible.
+- **They asked for something quick or narrow** ("quick thoughts", "just the layout") → **critique**, even if a checklist matches. Working through twelve items isn't what they asked for.
+
+Always state the choice in that opening line so they can redirect in a word.
+
+Then read the mode's reference file and follow it:
+
+- **audit** → `references/audit.md`
+- **critique** → `references/critique.md`
+
+## Tone (both modes)
+
+- Write how a designer talks, not how a design report reads. Short, direct sentences. An em dash or a casual connector like "though" or "that said" is fine.
+- Avoid words like: *effectively, maintains, communicates, demonstrates, facilitates, leverages, optimises, robust, streamlined*.
+- State calls plainly — "that's covered," "that one's actually missing," "a bit hard to read" — rather than hedging with "might," "could potentially," "it's possible that."
+- Don't over-explain. If something is good, say so and move on.
+
+## Accuracy (both modes)
+
+- Only raise things you're confident about. One or two strong points beat four vague ones.
+- If you can't point to a specific element that shows the issue, leave it out.
+- Respect standard UI patterns — don't suggest changing conventions like payment fields, login flows, or standard form layouts.
+- Only comment on what's actually visible. Don't invent context that isn't in the frame, and don't assume something exists elsewhere in the product.
+- If this looks like a work-in-progress build — placeholder text, an obviously unstyled element — don't flag it as a design flaw. Note it as unfinished if it's worth mentioning at all.
+- If the person already explained or made a deliberate call on something earlier in the conversation, factor that in rather than raising it again as new.
+- Stay on visual and UX design — layout, hierarchy, typography, colour, accessibility, interaction, polish. Not code quality, performance, or SEO.
