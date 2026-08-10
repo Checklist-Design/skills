@@ -1,16 +1,15 @@
 {
   "name": "checklist-design",
-  "version": "2.1.2",
-  "description": "Checklist Design's Claude Code tools. Includes /checklist-design:design-critique — a quick, honest peer-style critique of a UI or product design screenshot, live URL, or local build — and /checklist-design:design-audit, a systematic item-by-item check against one of Checklist Design's published checklists.",
+  "version": "3.0.0",
+  "description": "Design review grounded in Checklist Design's 100+ published checklists. One skill, two modes: /checklist-design audit for a systematic item-by-item check, /checklist-design critique for quick honest feedback.",
   "author": {
     "name": "Checklist Design",
     "url": "https://checklist.design"
   },
-  "homepage": "https://github.com/checklist-design/design-critique",
+  "homepage": "https://checklist.design",
   "license": "MIT",
   "skills": [
-    "./skills/design-critique",
-    "./skills/design-audit"
+    "./skills/checklist-design"
   ],
   "repository": "https://github.com/Checklist-Design/design-critique",
   "keywords": [

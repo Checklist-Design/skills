@@ -8,8 +8,8 @@
     {
       "name": "checklist-design",
       "source": "./",
-      "description": "Checklist Design's Claude Code tools: /checklist-design:design-critique for general feedback, /checklist-design:design-audit for a systematic checklist check.",
-      "version": "2.1.2"
+      "description": "Design review grounded in Checklist Design's published checklists — /checklist-design audit for a systematic check, critique for quick feedback.",
+      "version": "3.0.0"
     }
   ]
 }
