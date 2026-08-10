@@ -92,8 +92,8 @@ Other tools that support the Agent Skills format read from their own equivalent 
 
 ### How to update
 
-- **`npx skills add` path:** re-run the same install command — `npx skills add checklist-design/design-critique -a claude-code` — to pull the latest version. It's safe to run again over an existing install. Confirm with `npx skills list`.
-- **Claude Code plugin path:** try `/plugin marketplace update checklist-design` followed by `/plugin update checklist-design@checklist-design` in a terminal session first. If Desktop's Plugins panel still shows the old version or claims you're "on latest" when you know otherwise, its update check can lag — uninstalling and reinstalling from the same panel (`+` → Plugins → checklist-design) forces a fresh pull and is the more reliable fix.
+- **`npx skills add` path (recommended):** run `npx skills update`. That's a first-class command — it updates installed skills to their latest versions, and `npx skills list` confirms what you have. This is the most reliable update path of the three.
+- **Claude Code plugin path:** run `/plugin marketplace update checklist-design` *first*, then `/plugin update checklist-design@checklist-design`. Order matters. The update check compares your install against a **locally cached copy of this marketplace**, which is only refreshed on install or by that first command — never automatically. That's why "check for updates" can report "on latest version" indefinitely while a newer release exists. If it stays stuck, uninstalling and reinstalling also works, because reinstalling re-clones the cache.
 - **Manual copy:** there's no update mechanism — re-copy the folder(s) over the old ones.
 
 ## Usage

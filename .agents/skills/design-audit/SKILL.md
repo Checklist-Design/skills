@@ -2,7 +2,7 @@
 name: design-audit
 description: Systematic audit of a UI or product design against one of Checklist Design's published checklists — goes through every item on the checklist, marks it present, missing, not needed, or unclear from what's shown, and explains which gaps actually matter. This is a completeness check, not a general design opinion. Use when the user asks to audit a screen, check it against a checklist, verify coverage, find out what's missing, or asks things like "what's missing from this checkout," "does this cover everything it needs to," or "check this against the Login checklist." For open-ended feedback or a general design review instead of a systematic check, use the design-critique skill.
 license: MIT — see LICENSE
-compatibility: Needs no network access — all checklist content is bundled in references/ and read locally. Needs a way to see the design under review: an image already in the conversation, or a browser tool for a live URL or local dev server. Works in any Agent Skills-compatible tool; Claude Code's plugin install adds a bundled hook for reliable triggering.
+compatibility: "Needs no network access — all checklist content is bundled in references/ and read locally. Needs a way to see the design under review: an image already in the conversation, or a browser tool for a live URL or local dev server. Works in any Agent Skills-compatible tool; Claude Code's plugin install adds a bundled hook for reliable triggering."
 metadata:
   version: "2.1.1"
   author: "Checklist Design"
@@ -54,24 +54,7 @@ Don't call something missing just because it isn't visible — check whether it'
 
 ## Output
 
-When this skill is wired into an app, API, or automated pipeline, return strict JSON in this shape:
-
-```json
-{
-  "checklist": { "name": "Login", "url": "https://www.checklist.design/mobile/login" },
-  "items": [
-    { "title": "Passwordless sign-in (magic link)", "status": "present" },
-    { "title": "Password field", "status": "not needed", "reason": "Magic link already covers this — not both required." },
-    { "title": "Error states", "status": "cant_tell", "reason": "No error state is shown in this screenshot." },
-    { "title": "Social sign-in", "status": "missing", "reason": "No alternative sign-in method is offered." }
-  ],
-  "summary": "One or two plain-language sentences on the overall state."
-}
-```
-
-`status` is one of `present`, `missing`, `not_needed`, `cant_tell`. Include a short `reason` for anything that isn't `present` — a bare status without one isn't useful. No markdown inside the JSON values — raw text only.
-
-When used conversationally, don't dump a table. Group it in prose the way you'd actually say it out loud: what's covered, what's genuinely missing, what's missing but doesn't matter and why, and what you couldn't tell from this screen. Open with which checklist you're using and a link to it.
+Don't dump a table. Group it in prose the way you'd actually say it out loud: what's covered, what's genuinely missing, what's missing but doesn't matter and why, and what you couldn't tell from this screen. Open with which checklist you're using and a link to it.
 
 ## Tone
 

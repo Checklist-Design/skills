@@ -2,7 +2,7 @@
 name: design-critique
 description: Quick, honest peer-style critique of a UI or product design — a screenshot, a live URL, or a page someone is building locally — evaluating purpose, hierarchy, layout, typography, color, accessibility, interaction, and polish, in the voice of a designer leaving a comment for a colleague whose work they respect. Use when the user shares a screenshot or URL, or asks for feedback, a design review, or a critique on a page, screen, or interface they're building or reviewing — phrasings like "does this look right," "roast my landing page," "is this accessible," "what do you think of this UI," or "review my dashboard." For a systematic, item-by-item check against one of Checklist Design's checklists instead of an open opinion, use the design-audit skill.
 license: MIT — see LICENSE
-compatibility: Needs no network access — all checklist content is bundled in references/ and read locally. Needs a way to see the design under review: an image already in the conversation, or a browser tool able to capture a live URL or local dev server. Works in any Agent Skills-compatible tool. In Claude Code, install as the full plugin for a bundled hook that improves trigger reliability.
+compatibility: "Needs no network access — all checklist content is bundled in references/ and read locally. Needs a way to see the design under review: an image already in the conversation, or a browser tool able to capture a live URL or local dev server. Works in any Agent Skills-compatible tool. In Claude Code, install as the full plugin for a bundled hook that improves trigger reliability."
 metadata:
   version: "2.1.1"
   author: "Checklist Design"
@@ -74,22 +74,9 @@ Not all of these will apply to every screen — use judgement on which are relev
 
 ## Output
 
-When this skill is wired into an app, API, or automated pipeline, return strict JSON in this shape:
+Open with the one-line statement of what you're assessing (see "What you're looking at" above), then the strengths and considerations as plain prose. Not a table, not a scorecard. If you referenced a checklist, that comes through naturally in the prose (see step 6 above) rather than as a separate list.
 
-```json
-{
-  "confidence": "low|medium|high",
-  "strengths": ["things the design genuinely does well, in plain language. Aim for at least 2 if you can honestly identify them. Only include things you're confident about."],
-  "considerations": ["things worth looking at, written as casual suggestions, not formal critiques."],
-  "checklistsReferenced": [{ "name": "Permissions", "url": "https://www.checklist.design/mobile/permissions" }]
-}
-```
-
-`checklistsReferenced` is optional — include an entry only for checklists that actually backed up a strength or consideration above (see "Grounding in Checklist Design's checklists"). Omit the field, or return an empty array, if none applied.
-
-No markdown inside the JSON values — raw text only.
-
-When this skill is used conversationally (e.g. inside a chat session, not called via API), present the same strengths and considerations as plain prose instead of raw JSON. Open with the one-line statement of what you're assessing (see "What you're looking at" above), then the strengths and considerations. If any checklists were referenced, that comes through naturally in the prose (see step 6 above) rather than as a separate list. The structure of the thinking matters more than the output format.
+Aim for at least two genuine strengths alongside the considerations — a critique that's all considerations reads as unbalanced, not thorough.
 
 ## Tone
 

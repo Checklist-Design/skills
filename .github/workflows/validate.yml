@@ -1,0 +1,75 @@
+name: Validate skills
+
+# Catches packaging breakage before it ships. This exists because v2.0.0 and
+# v2.1.0 both shipped with a YAML syntax error in SKILL.md frontmatter — an
+# unquoted `compatibility:` value containing ": " — which made the skills CLI
+# skip every skill silently. Installs via `npx skills add` produced nothing at
+# all, on what the README recommends as the primary install path, and nothing
+# caught it because nothing ever ran the installer.
+#
+# Rather than reimplement the parsing, this runs the real CLI and asserts it
+# finds both skills. If the tool can't read them, neither can users.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Skills CLI can discover both skills
+        run: |
+          # Strip ANSI colour codes before matching — the CLI colourises its
+          # output, so a plain grep for "Found 2 skills" silently fails against
+          # "Found \e[32m2\e[39m skills".
+          out=$(npx -y skills@latest add . -l 2>&1 | sed 's/\x1b\[[0-9;]*m//g')
+          echo "$out"
+          if echo "$out" | grep -qi "YAML parse error\|Skipped"; then
+            echo "::error::skills CLI could not parse one or more SKILL.md files"
+            exit 1
+          fi
+          if ! echo "$out" | grep -q "Found 2 skills"; then
+            echo "::error::expected the CLI to find exactly 2 skills"
+            exit 1
+          fi
+
+      - name: skills/ and .agents/ mirrors are identical
+        run: |
+          for s in design-critique design-audit; do
+            if ! diff -r "skills/$s" ".agents/skills/$s" > /dev/null; then
+              echo "::error::skills/$s and .agents/skills/$s have drifted apart"
+              diff -r "skills/$s" ".agents/skills/$s" | head -20
+              exit 1
+            fi
+          done
+          echo "mirrors in sync"
+
+      - name: Version is consistent across all manifests
+        run: |
+          v=$(node -p "require('./.claude-plugin/plugin.json').version")
+          echo "plugin.json: $v"
+          node -e "
+            const m = require('./.claude-plugin/marketplace.json');
+            for (const p of m.plugins) {
+              if (p.version !== '$v') {
+                console.error('::error::marketplace.json ' + p.name + ' is ' + p.version + ', expected $v');
+                process.exit(1);
+              }
+            }
+          "
+          for f in skills/*/SKILL.md .agents/skills/*/SKILL.md; do
+            fv=$(grep -m1 'version:' "$f" | sed 's/.*"\(.*\)".*/\1/')
+            if [ "$fv" != "$v" ]; then
+              echo "::error::$f is $fv, expected $v"
+              exit 1
+            fi
+          done
+          echo "all manifests agree on $v"
