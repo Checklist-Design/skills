@@ -1,6 +1,6 @@
 {
   "name": "checklist-design",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Design review grounded in Checklist Design's 100+ published checklists. One skill, two modes: /checklist-design audit for a systematic item-by-item check, /checklist-design critique for quick honest feedback.",
   "author": {
     "name": "Checklist Design",
