@@ -1,5 +1,7 @@
 # Checklist Design — design review for AI coding agents
 
+[![skills.sh](https://skills.sh/b/checklist-design/skills)](https://skills.sh/checklist-design/skills)
+
 Design review grounded in [Checklist Design's](https://checklist.design) 100+ published checklists, for Claude Code, Cursor, Codex, Gemini CLI and around twenty other tools.
 
 One skill, two modes:
