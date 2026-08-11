@@ -4,7 +4,7 @@ Design review grounded in [Checklist Design's](https://checklist.design) 100+ pu
 
 One skill, two modes:
 
-- **`audit`** — works through the matching checklist item by item and tells you what's present, partially present or missing, and whether each gap actually matters.
+- **`audit`** — works through the matching checklist item by item as a table: a status marker per item (present, partially present, missing, not needed, can't tell), the item itself, and why it matters. Scannable, and it pastes into Notion, Linear or Confluence intact.
 - **`critique`** — quick, honest peer review of hierarchy, layout, typography, colour, accessibility, interaction and polish. Written like a designer leaving a comment for a colleague, not a design report.
 
 Give it a screenshot and it picks the right mode itself — auditing when a checklist clearly matches, critiquing when none does.
@@ -122,7 +122,7 @@ That's deliberate. Claude's web fetch tool [can only retrieve URLs that already 
 
 Most AI design feedback reads like a checklist read aloud. Critique mode is deliberately tuned against that: a blocklist of "AI report" words (*effectively, leverages, optimises, streamlined*), a requirement to name at least two genuine strengths, and a rule that considerations without a specific visible cause get dropped rather than padded in.
 
-Audit mode goes the other way on purpose — a completeness check has to actually be complete — but keeps the same plain, direct voice, and distinguishes "partially present" from a flat pass or fail so the result points at something actionable.
+Audit mode goes the other way on purpose — a completeness check has to actually be complete — but it's built to stay honest rather than to grade. "Partially present" gets its own status so results point at a specific improvement instead of a pass or fail, "not needed here" is a neutral marker rather than a failure colour (a passwordless login shouldn't look like it's failing two-thirds of a password checklist), and there's deliberately no score or percentage.
 
 ## License
 

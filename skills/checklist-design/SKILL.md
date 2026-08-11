@@ -6,7 +6,7 @@ compatibility: "Needs no network access — all checklist content is bundled in 
 user-invocable: true
 argument-hint: "[audit|critique] [target]"
 metadata:
-  version: "3.0.0"
+  version: "3.1.0"
   author: "Checklist Design"
 ---
 
@@ -18,11 +18,14 @@ Design review grounded in Checklist Design's own checklists. Two modes: **audit*
 
 First, work out what you're actually assessing, and say so at the start of your response:
 
-1. **An image is already in the conversation** — a screenshot, a pasted mockup, a Figma export. Use it directly.
-2. **No image, but a URL or local address is mentioned** — a live site, or something running locally (e.g. `localhost:3000`). If a browser tool is available, navigate to it and capture a screenshot first. If the address isn't stated but is clearly implied, ask which URL or port rather than guessing.
-3. **No image, no URL, and no way to capture one** — don't work from markup or component code alone; a page can look fine in code and be visually broken, or the reverse. Ask for a screenshot instead of guessing at the rendered result.
+1. **An image is in the conversation** — a screenshot, a pasted mockup, a Figma export. Use it.
+2. **A URL or local address is mentioned** — a live site, or something running locally (e.g. `localhost:3000`). If a browser tool is available, open it and take a screenshot first. If the address isn't stated but is clearly implied, ask which one rather than guessing.
+3. **A file or folder of source is pointed at** — a page, a component, a template. **Audit can work from this.** See `references/audit.md`, which covers what source can and can't tell you.
+4. **Nothing to look at at all** — ask for a screenshot, a URL, or a file.
 
-State plainly what you ended up assessing — "Reviewing the screenshot you shared," "Reviewing a capture of localhost:3000," or "I can't see a rendered version yet — could you share a screenshot?"
+**Critique always needs to see the rendered design.** A page can look fine in the code and be broken on screen, or the other way round, so judging layout, spacing or type from markup isn't honest. If source is all there is, say so and ask for a screenshot rather than guessing.
+
+Say what you ended up looking at — "Reviewing the screenshot you shared," "Reviewing a capture of localhost:3000," "Reading about.html," or "I can't see this yet — could you share a screenshot?"
 
 ## Finding the relevant checklist
 
@@ -57,7 +60,7 @@ Then read the mode's reference file and follow it:
 
 - Write how a designer talks, not how a design report reads. Short, direct sentences. An em dash or a casual connector like "though" or "that said" is fine.
 - Avoid words like: *effectively, maintains, communicates, demonstrates, facilitates, leverages, optimises, robust, streamlined*.
-- State calls plainly — "that's covered," "that one's actually missing," "a bit hard to read" — rather than hedging with "might," "could potentially," "it's possible that."
+- Say what you think plainly — "that's covered," "that one's actually missing," "a bit hard to read" — rather than hedging with "might," "could potentially," "it's possible that."
 - Don't over-explain. If something is good, say so and move on.
 
 ## Accuracy (both modes)
