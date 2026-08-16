@@ -9,7 +9,7 @@
       "name": "checklist-design",
       "source": "./",
       "description": "Design review grounded in Checklist Design's published checklists — /checklist-design audit for a systematic check, critique for quick feedback.",
-      "version": "3.1.0"
+      "version": "3.1.1"
     }
   ]
 }

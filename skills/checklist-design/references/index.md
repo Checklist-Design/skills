@@ -1,6 +1,6 @@
 # Checklist Design — checklist index
 
-112 checklists, from https://www.checklist.design.
+118 checklists, from https://www.checklist.design.
 
 Find the checklist(s) matching the screen under review, then read the matching
 file in `references/checklists/` for its full items. The file name is given in
@@ -8,13 +8,14 @@ backticks after each name.
 
 ## Design system
 
-- **Tokens** `design-system-tokens.md` — The layer of a design system where defined variables are outlined across the platform to enable consistency, theming and alignment with code.
 - **Drawer** `design-system-drawer.md` — A drawer is a panel that slides in from the edge, overlaying content. It provides access to detailed information without completely navigating away from the current page.
 - **Typography** `design-system-typography.md` — The type layer of a design system that defines a scale, hierarchy, and set of text styles that is consistent, accessible, and expressive across the full range of product contexts
 - **Accessibility** `design-system-accessibility.md` — The accessibility foundation of a design system including the standards, tooling, and shared conventions that ensure every component and pattern is built inclusively from the start.
 - **Date Picker** `design-system-date-picker.md`
 - **Spacing / Grid** `design-system-spacing-and-grid.md` — The spatial layer of a design system, defining a consistent scale for spacing, a grid for layout, and the rules that make both feel deliberate and coherent across all surfaces.
+- **Breadcrumb** `design-system-breadcrumb.md` — A breadcrumb is a secondary navigation element that shows users their current location within a specific hierarchy of a website or app.
 - **Color System** `design-system-color-system.md` — The color layer of a design system — defining a palette that is purposeful, accessible, themeable, and expressed as tokens rather than raw values.
+- **Tokens** `design-system-tokens.md` — The layer of a design system where defined variables are outlined across the platform to enable consistency, theming and alignment with code.
 - **Accordion** `design-system-accordion.md` — An accordion is a vertically stacked list of items that reveal or hide associated content sections when clicked. They help organize information hierarchically and saves screen space by showing only relevant content.
 - **Skeleton** `design-system-skeleton.md` — A skeleton is a placeholder that mimics the structure of content while it loads. It provides visual feedback that content is coming and reduces perceived wait time.
 - **Carousel** `design-system-carousel.md` — A carousel is a slideshow component that displays content one slide at a time. Users can alternate content through manual navigation or waiting for automatic transition.
@@ -56,14 +57,13 @@ backticks after each name.
 
 ## Mobile app
 
-- **In-App Notifications** `mobile-in-app-notifications.md` — The in-app feed of alerts, updates, and messages the user has received — distinct from system push notifications.
-- **Search** `mobile-search.md` — The search experience on mobile where keyboard handling and filtering results are unique to web.
-- **Billing** `mobile-billing.md` — Payment history, receipts, and everything related to how the user is charged.
+- **Onboarding Checklist** `mobile-onboarding-checklist.md` — The in-app progress checklist that guides a new user through key setup steps to learn how the product works by completing actions.
 - **Camera** `mobile-camera-media-capture.md` — Capturing photos, video, or documents as well as reviewing and customising the capture experience for accessing the phone camera within an app.
 - **Map View** `mobile-map-view.md` — The native map screen showing location-based content, user position, and contextual overlays
-- **Onboarding Checklist** `mobile-onboarding-checklist.md` — The in-app progress checklist that guides a new user through key setup steps to learn how the product works by completing actions.
+- **Push Notification Opt-in** `mobile-push-notification-opt-in.md` — The custom screen shown before the system notification prompt to persuade a user to accept push notifications before they see the binary system dialog.
 - **Paywall** `mobile-paywall.md` — A hard gate that blocks access to locked content and offers a path to subscribe.
 - **Onboarding** `mobile-onboarding.md` — The first-run experience that orients a new user, collects necessary setup information, and delivers an early sense of the app value
+- **Dashboard** `mobile-dashboard.md` — A glanceable summary of what matters most in an app experience, typically with leads that take the user to other specific areas of the app.
 - **Chat** `mobile-chat.md` — The one-to-one or group messaging screen, handling keyboard behaviour, message input, media sharing, and real-time updates in the constraints of a mobile screen.
 - **Settings** `mobile-settings.md` — The screen where users manage their account, preferences, notifications, and app behaviour.
 - **In-App Browser** `mobile-in-app-browser.md` — A browser experience inside a mobile app, which is handy for opening web links or accessing web data via API.
@@ -72,19 +72,23 @@ backticks after each name.
 - **Checkout** `mobile-checkout.md` — The payment flow on mobile optimised for native payment methods and the constraints of a small screen.
 - **Action Sheet** `mobile-action-sheet.md` — The sheet that slides up from the bottom of the screen to present options or confirmations — the mobile equivalent of a dropdown menu or modal dialog.
 - **Tab Bar Navigation** `mobile-tab-bar-navigation.md` — The persistent bottom navigation bar that gives users access to the top-level sections of the app
+- **In-App Notifications** `mobile-in-app-notifications.md` — The in-app feed of alerts, updates, and messages the user has received — distinct from system push notifications.
+- **Search** `mobile-search.md` — The search experience on mobile where keyboard handling and filtering results are unique to web.
+- **Billing** `mobile-billing.md` — Payment history, receipts, and everything related to how the user is charged.
 - **Cart** `mobile-cart.md`
 - **Login** `mobile-login.md` — Everything a returning user needs to authenticate quickly and securely.
+- **Sign up** `mobile-sign-up.md` — A low-friction registration flow that collects only what is needed and sets a positive first impression.
 - **Account** `mobile-account.md` — Private account settings like credentials, linked accounts, notifications, and destructive actions.
 - **Invite** `mobile-invite.md` — The flow for adding collaborators or members to a shared space with role assignment and pending invite management.
 
 ## Web app
 
-- **Notification Settings** `web-app-notification-settings.md` — Where users configure exactly which notifications they receive, through which channels, and how frequently.
 - **Help Center** `web-app-help-center.md` — A self-serve documentation hub where users can find answers without contacting support.
 - **Billing** `web-app-billing.md` — Payment methods, invoices, and everything related to the financial side of the account
 - **Settings** `web-app-settings.md` — A screen that gives users control over their account, preferences, and application behaviour
 - **User Management** `web-app-user-management.md` — A screen that allows admins to view, invite, and manage the users who have access to a product or workspace.
 - **Single Item Detail** `web-app-single-item-detail.md` — A screen that displays the full details of a single record — a user, order, document, or any other entity — after selecting it from a list.
+- **Data Table** `web-app-data-table.md` — A structured grid for dense datasets with sorting, filtering, bulk operations, and column control.
 - **Admin Panel** `web-app-admin-panel.md` — Where administrators manage users, configure the product, and oversee activity across the organisation
 - **Analytics** `web-app-analytics.md` — A live dashboard that surfaces key metrics and trends, helping users understand what is happening right now.
 - **Empty State** `web-app-empty-state.md` — The state of a screen or component when there is no data to display, whether it's because a user is new, has cleared their content, or a search returned no results.
@@ -104,6 +108,7 @@ backticks after each name.
 - **Maintenance** `web-app-maintenance.md` — A screen shown when the application is temporarily unavailable due to scheduled maintenance or an unexpected outage.
 - **2FA** `web-app-2-factor-authentication.md` — A screen that guides users through setting up or completing two-factor authentication to add a second layer of security to their account
 - **Account** `web-app-account.md` — Where users view and manage their personal information, preferences, and account-level details
+- **Notification Settings** `web-app-notification-settings.md` — Where users configure exactly which notifications they receive, through which channels, and how frequently.
 - **Pricing** `web-app-pricing.md` — A pricing page breaks down costs, features and options for paying to access the product itself or a version of it.
 - **Login** `web-app-login.md` — A login page is a critical component of many web applications, serving as the gateway for users to access personalized features, secure content, and their own data
 
@@ -115,6 +120,7 @@ backticks after each name.
 - **Features** `website-features.md` — A page that walks through the full capabilities of the product, helping prospects understand what it does in depth.
 - **Testimonials** `website-testimonials.md` — A page dedicated to social proof, collecting customer quotes, reviews, and success stories in one place.
 - **Affiliate** `website-affiliate.md` — A page that invites potential affiliates or partners to join a programme, explaining how it works and what they stand to earn.
+- **Coming Soon** `website-coming-soon.md` — A placeholder page shown before a product or feature launches, designed to capture interest and build an early audience.
 - **Compare** `website-compare-page.md` — A page that positions the product directly against a specific competitor, helping prospects who are evaluating alternatives to make a decision.
 - **Status** `website-status.md`
 - **Press / Media** `website-press-media.md` — A page providing journalists, analysts, and content creators with the resources they need to cover the company accurately.
@@ -133,4 +139,4 @@ backticks after each name.
 - **Blog** `website-blog.md` — A blog page aggregates and displays multiple articles or posts in a chronological order, typically showing previews, titles, publication dates, and categories. It provides easy navigation through pagination or infinite scroll, allowing users to browse and discover content.
 - **Sign up** `website-sign-up.md` — A sign up page enables new users to create an account by providing required information through a form. It guides users through the registration process, validates input data, and establishes their credentials for accessing restricted features or personalized content.
 
-_Bundled content: v3.1.0, 2026-08-11._
+_Bundled content: v3.1.1, 2026-08-16._
