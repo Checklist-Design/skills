@@ -6,7 +6,7 @@ compatibility: "Needs no network access — all checklist content is bundled in 
 user-invocable: true
 argument-hint: "[audit|critique] [target]"
 metadata:
-  version: "3.1.1"
+  version: "3.1.2"
   author: "Checklist Design"
 ---
 
