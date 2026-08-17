@@ -17,7 +17,7 @@ Originally built as the prompt behind the AI quality checker in the Checklist De
 
 One thing: a way to see the design. The checklist content is bundled inside the skill — no network access, no API, no setup.
 
-"A way to see it" means either:
+"A way to see it" means one of:
 
 - **An image in the conversation** — paste a screenshot and ask.
 - **A live URL or local dev server**, captured with a browser tool. Claude Code Desktop has one built in. Claude Code CLI, Codex, or anywhere without a built-in preview needs one added, e.g.:
@@ -29,7 +29,17 @@ One thing: a way to see the design. The checklist content is bundled inside the 
   codex mcp add playwright -- npx @playwright/mcp@latest
   ```
 
-Without either, it'll ask for a screenshot rather than guess at how something renders.
+- **A selected Figma file or frame**, read with Figma's MCP server. Claude Code, Cursor, Claude Desktop and VS Code all support it; add it if your tool doesn't have it built in:
+
+  ```
+  claude mcp add --transport http figma https://mcp.figma.com/mcp
+  ```
+
+  Then run `/mcp` and authenticate — see [Figma's remote server setup](https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/) for other clients.
+
+  Critique takes a screenshot of the selection; audit also reads structured design data (styles, token bindings, variants), which is how it catches things a screenshot can't — a hardcoded colour where a variable should be bound, a missing variant.
+
+Without any of these, it'll ask for a screenshot rather than guess at how something renders.
 
 ## Installation
 
