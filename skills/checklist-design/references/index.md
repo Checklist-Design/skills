@@ -1,6 +1,6 @@
 # Checklist Design — checklist index
 
-122 checklists, from https://www.checklist.design.
+125 checklists, from https://www.checklist.design.
 
 Find the checklist(s) matching the screen under review, then read the matching
 file in `references/checklists/` for its full items. The file name is given in
@@ -14,6 +14,7 @@ backticks after each name.
 - **Date Picker** `design-system-date-picker.md`
 - **Spacing / Grid** `design-system-spacing-and-grid.md` — The spatial layer of a design system, defining a consistent scale for spacing, a grid for layout, and the rules that make both feel deliberate and coherent across all surfaces.
 - **Breadcrumb** `design-system-breadcrumb.md` — A breadcrumb is a secondary navigation element that shows users their current location within a specific hierarchy of a website or app.
+- **Alert** `design-system-alert.md`
 - **Color System** `design-system-color-system.md` — The color layer of a design system — defining a palette that is purposeful, accessible, themeable, and expressed as tokens rather than raw values.
 - **Tokens** `design-system-tokens.md` — The layer of a design system where defined variables are outlined across the platform to enable consistency, theming and alignment with code.
 - **Accordion** `design-system-accordion.md` — An accordion is a vertically stacked list of items that reveal or hide associated content sections when clicked. They help organize information hierarchically and saves screen space by showing only relevant content.
@@ -57,7 +58,6 @@ backticks after each name.
 
 ## Mobile app
 
-- **Paywall** `mobile-paywall.md` — A hard gate that blocks access to locked content and offers a path to subscribe.
 - **Push Notification Opt-in** `mobile-push-notification-opt-in.md` — The custom screen shown before the system notification prompt to persuade a user to accept push notifications before they see the binary system dialog.
 - **Onboarding** `mobile-onboarding.md` — The first-run experience that orients a new user, collects necessary setup information, and delivers an early sense of the app value
 - **Dashboard** `mobile-dashboard.md` — A glanceable summary of what matters most in an app experience, typically with leads that take the user to other specific areas of the app.
@@ -76,16 +76,18 @@ backticks after each name.
 - **Camera** `mobile-camera-media-capture.md` — Capturing photos, video, or documents as well as reviewing and customising the capture experience for accessing the phone camera within an app.
 - **Map View** `mobile-map-view.md` — The native map screen showing location-based content, user position, and contextual overlays
 - **Onboarding Checklist** `mobile-onboarding-checklist.md` — The in-app progress checklist that guides a new user through key setup steps to learn how the product works by completing actions.
+- **Paywall** `mobile-paywall.md` — A hard gate that blocks access to locked content and offers a path to subscribe.
 - **Cart** `mobile-cart.md`
 - **Login** `mobile-login.md` — Everything a returning user needs to authenticate quickly and securely.
 - **Sign up** `mobile-sign-up.md` — A low-friction registration flow that collects only what is needed and sets a positive first impression.
+- **Referral** `mobile-referral.md` — The flow through which users earn rewards for introducing new members to the app.
 - **Account** `mobile-account.md` — Private account settings like credentials, linked accounts, notifications, and destructive actions.
 - **Invite** `mobile-invite.md` — The flow for adding collaborators or members to a shared space with role assignment and pending invite management.
 
 ## Web app
 
-- **Billing** `web-app-billing.md` — Payment methods, invoices, and everything related to the financial side of the account
 - **Help Center** `web-app-help-center.md` — A self-serve documentation hub where users can find answers without contacting support.
+- **Billing** `web-app-billing.md` — Payment methods, invoices, and everything related to the financial side of the account
 - **Settings** `web-app-settings.md` — A screen that gives users control over their account, preferences, and application behaviour
 - **User Management** `web-app-user-management.md` — A screen that allows admins to view, invite, and manage the users who have access to a product or workspace.
 - **Single Item Detail** `web-app-single-item-detail.md` — A screen that displays the full details of a single record — a user, order, document, or any other entity — after selecting it from a list.
@@ -117,6 +119,7 @@ backticks after each name.
 
 ## Website
 
+- **Event Page** `website-event-page.md` — A page promoting a specific event — a conference, webinar, workshop, or meetup — and driving registrations.
 - **About** `website-about.md` — A page that tells the story of the company — who built it, why, and what they believe.
 - **Privacy** `website-legal-privacy.md` — Page covering the legal terms of using the product (privacy policy, terms of service, and cookie policy) written clearly and kept current.
 - **Features** `website-features.md` — A page that walks through the full capabilities of the product, helping prospects understand what it does in depth.
@@ -143,4 +146,4 @@ backticks after each name.
 - **Blog** `website-blog.md` — A blog page aggregates and displays multiple articles or posts in a chronological order, typically showing previews, titles, publication dates, and categories. It provides easy navigation through pagination or infinite scroll, allowing users to browse and discover content.
 - **Sign up** `website-sign-up.md` — A sign up page enables new users to create an account by providing required information through a form. It guides users through the registration process, validates input data, and establishes their credentials for accessing restricted features or personalized content.
 
-_Bundled content: v3.2.0, 2026-08-17._
+_Bundled content: v3.2.1, 2026-08-20._
