@@ -1,6 +1,6 @@
 # Checklist Design — checklist index
 
-129 checklists, from https://www.checklist.design.
+138 checklists, from https://www.checklist.design.
 
 Find the checklist(s) matching the screen under review, then read the matching
 file in `references/checklists/` for its full items. The file name is given in
@@ -38,8 +38,8 @@ backticks after each name.
 - **Button** `design-system-button.md` — A button is an interactive element that triggers an action when clicked or tapped. It clearly communicates its clickability through visual styling and provides feedback on user interaction, making it a fundamental component for enabling user actions in interfaces.
 - **Badge** `design-system-badge.md` — A badge is a small visual indicator that displays short, dynamic information like counts or status. It typically appears as a colored circle or pill shape, often overlaid on other elements.
 - **Avatar** `design-system-avatar.md` — An avatar is a visual representation of a user. It helps identify individuals across a digital interface, commonly used in user profiles, comment sections, and chat applications.
-- **Stepper** `design-system-stepper.md` — A numeric input control with increment and decrement buttons — for adjusting a value by discrete steps, such as quantity, duration, or count.
 - **Dropdown Menu** `design-system-dropdown-menu.md` — A dropdown triggered from a button or right-click target to reveal a menu of actions the user can proceed with
+- **Stepper** `design-system-stepper.md` — A numeric input control with increment and decrement buttons — for adjusting a value by discrete steps, such as quantity, duration, or count.
 
 ## Flows
 
@@ -59,6 +59,12 @@ backticks after each name.
 
 ## Mobile app
 
+- **Camera** `mobile-camera-media-capture.md` — Capturing photos, video, or documents as well as reviewing and customising the capture experience for accessing the phone camera within an app.
+- **Search** `mobile-search.md` — The search experience on mobile where keyboard handling and filtering results are unique to web.
+- **Billing** `mobile-billing.md` — Payment history, receipts, and everything related to how the user is charged.
+- **Map View** `mobile-map-view.md` — The native map screen showing location-based content, user position, and contextual overlays
+- **Onboarding Checklist** `mobile-onboarding-checklist.md` — The in-app progress checklist that guides a new user through key setup steps to learn how the product works by completing actions.
+- **Paywall** `mobile-paywall.md` — A hard gate that blocks access to locked content and offers a path to subscribe.
 - **Push Notification Opt-in** `mobile-push-notification-opt-in.md` — The custom screen shown before the system notification prompt to persuade a user to accept push notifications before they see the binary system dialog.
 - **Onboarding** `mobile-onboarding.md` — The first-run experience that orients a new user, collects necessary setup information, and delivers an early sense of the app value
 - **Dashboard** `mobile-dashboard.md` — A glanceable summary of what matters most in an app experience, typically with leads that take the user to other specific areas of the app.
@@ -72,23 +78,22 @@ backticks after each name.
 - **Action Sheet** `mobile-action-sheet.md` — The sheet that slides up from the bottom of the screen to present options or confirmations — the mobile equivalent of a dropdown menu or modal dialog.
 - **Tab Bar Navigation** `mobile-tab-bar-navigation.md` — The persistent bottom navigation bar that gives users access to the top-level sections of the app
 - **In-App Notifications** `mobile-in-app-notifications.md` — The in-app feed of alerts, updates, and messages the user has received — distinct from system push notifications.
-- **Camera** `mobile-camera-media-capture.md` — Capturing photos, video, or documents as well as reviewing and customising the capture experience for accessing the phone camera within an app.
-- **Search** `mobile-search.md` — The search experience on mobile where keyboard handling and filtering results are unique to web.
-- **Billing** `mobile-billing.md` — Payment history, receipts, and everything related to how the user is charged.
-- **Map View** `mobile-map-view.md` — The native map screen showing location-based content, user position, and contextual overlays
-- **Onboarding Checklist** `mobile-onboarding-checklist.md` — The in-app progress checklist that guides a new user through key setup steps to learn how the product works by completing actions.
-- **Paywall** `mobile-paywall.md` — A hard gate that blocks access to locked content and offers a path to subscribe.
 - **Cart** `mobile-cart.md`
 - **Login** `mobile-login.md` — Everything a returning user needs to authenticate quickly and securely.
 - **Sign up** `mobile-sign-up.md` — A low-friction registration flow that collects only what is needed and sets a positive first impression.
-- **Invite** `mobile-invite.md` — The flow for adding collaborators or members to a shared space with role assignment and pending invite management.
 - **Account** `mobile-account.md` — Private account settings like credentials, linked accounts, notifications, and destructive actions.
 - **Referral** `mobile-referral.md` — The flow through which users earn rewards for introducing new members to the app.
+- **Invite** `mobile-invite.md` — The flow for adding collaborators or members to a shared space with role assignment and pending invite management.
+- **Upgrade** `mobile-upgrade.md` — A soft upsell screen that presents the value of upgrading to users who are open to it.
+- **Feedback** `mobile-feedback.md` — In-app prompts that ask users for their opinion — NPS surveys, rating scales, and open text — surfaced at the right moment and at the right frequency.
+- **Activity Feed** `mobile-activity-feed.md` — A chronological stream of actions taken by users and the system — a browsable record of what has happened, distinct from notifications that demand attention.
 
 ## Web app
 
-- **Settings** `web-app-settings.md` — A screen that gives users control over their account, preferences, and application behaviour
+- **Upgrade** `web-app-upgrade.md` — The dedicated page a user lands on when they have decided to subscribe or move to a higher plan.
+- **Notification Settings** `web-app-notification-settings.md` — Where users configure exactly which notifications they receive, through which channels, and how frequently.
 - **Help Center** `web-app-help-center.md` — A self-serve documentation hub where users can find answers without contacting support.
+- **Settings** `web-app-settings.md` — A screen that gives users control over their account, preferences, and application behaviour
 - **Billing** `web-app-billing.md` — Payment methods, invoices, and everything related to the financial side of the account
 - **User Management** `web-app-user-management.md` — A screen that allows admins to view, invite, and manage the users who have access to a product or workspace.
 - **Single Item Detail** `web-app-single-item-detail.md` — A screen that displays the full details of a single record — a user, order, document, or any other entity — after selecting it from a list.
@@ -116,14 +121,19 @@ backticks after each name.
 - **Maintenance** `web-app-maintenance.md` — A screen shown when the application is temporarily unavailable due to scheduled maintenance or an unexpected outage.
 - **2FA** `web-app-2-factor-authentication.md` — A screen that guides users through setting up or completing two-factor authentication to add a second layer of security to their account
 - **Account** `web-app-account.md` — Where users view and manage their personal information, preferences, and account-level details
-- **Notification Settings** `web-app-notification-settings.md` — Where users configure exactly which notifications they receive, through which channels, and how frequently.
 - **Pricing** `web-app-pricing.md` — A pricing page breaks down costs, features and options for paying to access the product itself or a version of it.
 - **Login** `web-app-login.md` — A login page is a critical component of many web applications, serving as the gateway for users to access personalized features, secure content, and their own data
+- **Feedback** `web-app-feedback.md` — In-app prompts that collect user opinion — NPS surveys, CSAT ratings, and open text — surfaced at the right moment and at the right frequency.
+- **List View** `web-app-list-view.md` — A simpler row or card layout for browsing collections where dense tabular structure is not needed.
+- **Reporting** `web-app-reporting.md` — Generated reports that can be exported, scheduled, and shared — structured summaries of data for stakeholders.
+- **Home** `web-app-home.md` — The personalised starting point of the app — a dashboard that orients the user and surfaces the most relevant next actions.
+- **Document View** `web-app-document-view.md` — A rich content view for reading, editing, and collaborating on structured documents.
 
 ## Website
 
-- **Event Page** `website-event-page.md` — A page promoting a specific event — a conference, webinar, workshop, or meetup — and driving registrations.
 - **About** `website-about.md` — A page that tells the story of the company — who built it, why, and what they believe.
+- **Security** `website-security.md`
+- **Event Page** `website-event-page.md` — A page promoting a specific event — a conference, webinar, workshop, or meetup — and driving registrations.
 - **Privacy** `website-legal-privacy.md` — Page covering the legal terms of using the product (privacy policy, terms of service, and cookie policy) written clearly and kept current.
 - **Features** `website-features.md` — A page that walks through the full capabilities of the product, helping prospects understand what it does in depth.
 - **Testimonials** `website-testimonials.md` — A page dedicated to social proof, collecting customer quotes, reviews, and success stories in one place.
@@ -135,11 +145,10 @@ backticks after each name.
 - **Landing Page** `website-landing-page.md` — A standalone page designed to convert a specific audience, typically reached via an ad, email, or campaign link.
 - **Waitlist** `website-waitlist.md`
 - **Press / Media** `website-press-media.md` — A page providing journalists, analysts, and content creators with the resources they need to cover the company accurately.
-- **Security** `website-security.md`
 - **Team** `website-team.md` — A team page introduces an organization's staff members, leadership, or key personnel. It typically helps visitors understand the people behind the company while adding a human element to the brand's identity.
 - **Cart** `website-cart.md`
-- **Footer** `website-footer.md` — A footer is a persistent section at the bottom of a page that provides consistent access to secondary navigation, legal information and contact details to avoid cluttering the main content area.
 - **Search** `website-search.md` — A search results page displays organized findings based on a user's search query. It presents relevant matches in a scannable view to help users quickly find and navigate to their desired destination.
+- **Footer** `website-footer.md` — A footer is a persistent section at the bottom of a page that provides consistent access to secondary navigation, legal information and contact details to avoid cluttering the main content area.
 - **Careers** `website-careers.md` — A careers page typically displays job openings, company culture, and employment opportunities. It allows potential candidates to explore available positions, learn about the organization's values, and typically includes functionality to submit job applications or contact recruiters.
 - **Blog Post** `website-blog-post.md` — A blog post page displays a single article's content, including its title, author, publication date, and body text. It often includes related media (images, videos), social sharing options, and commenting functionality, allowing readers to engage with the content and navigate to other posts.
 - **Contact Us** `website-contact-us.md` — A contact us page provides visitors with methods to communicate with an organization. It typically includes a contact form, business address, phone numbers, email addresses, and sometimes a location.
@@ -150,4 +159,4 @@ backticks after each name.
 - **Blog** `website-blog.md` — A blog page aggregates and displays multiple articles or posts in a chronological order, typically showing previews, titles, publication dates, and categories. It provides easy navigation through pagination or infinite scroll, allowing users to browse and discover content.
 - **Sign up** `website-sign-up.md` — A sign up page enables new users to create an account by providing required information through a form. It guides users through the registration process, validates input data, and establishes their credentials for accessing restricted features or personalized content.
 
-_Bundled content: v3.2.4, 2026-09-07._
+_Bundled content: v3.2.5, 2026-10-28._
