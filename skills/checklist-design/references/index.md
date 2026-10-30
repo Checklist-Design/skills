@@ -59,13 +59,13 @@ backticks after each name.
 
 ## Mobile app
 
+- **Push Notif. Opt-in** `mobile-push-notification-opt-in.md` — The custom screen shown before the system notification prompt to persuade a user to accept push notifications before they see the binary system dialog.
 - **Camera** `mobile-camera-media-capture.md` — Capturing photos, video, or documents as well as reviewing and customising the capture experience for accessing the phone camera within an app.
 - **Search** `mobile-search.md` — The search experience on mobile where keyboard handling and filtering results are unique to web.
 - **Billing** `mobile-billing.md` — Payment history, receipts, and everything related to how the user is charged.
 - **Map View** `mobile-map-view.md` — The native map screen showing location-based content, user position, and contextual overlays
 - **Onboarding Checklist** `mobile-onboarding-checklist.md` — The in-app progress checklist that guides a new user through key setup steps to learn how the product works by completing actions.
 - **Paywall** `mobile-paywall.md` — A hard gate that blocks access to locked content and offers a path to subscribe.
-- **Push Notification Opt-in** `mobile-push-notification-opt-in.md` — The custom screen shown before the system notification prompt to persuade a user to accept push notifications before they see the binary system dialog.
 - **Onboarding** `mobile-onboarding.md` — The first-run experience that orients a new user, collects necessary setup information, and delivers an early sense of the app value
 - **Dashboard** `mobile-dashboard.md` — A glanceable summary of what matters most in an app experience, typically with leads that take the user to other specific areas of the app.
 - **Profile** `mobile-profile.md` — Not the account, but the public-facing identity of a user that others see when they look them up.
@@ -90,9 +90,9 @@ backticks after each name.
 
 ## Web app
 
-- **Upgrade** `web-app-upgrade.md` — The dedicated page a user lands on when they have decided to subscribe or move to a higher plan.
 - **Notification Settings** `web-app-notification-settings.md` — Where users configure exactly which notifications they receive, through which channels, and how frequently.
 - **Help Center** `web-app-help-center.md` — A self-serve documentation hub where users can find answers without contacting support.
+- **Upgrade** `web-app-upgrade.md` — The dedicated page a user lands on when they have decided to subscribe or move to a higher plan.
 - **Settings** `web-app-settings.md` — A screen that gives users control over their account, preferences, and application behaviour
 - **Billing** `web-app-billing.md` — Payment methods, invoices, and everything related to the financial side of the account
 - **User Management** `web-app-user-management.md` — A screen that allows admins to view, invite, and manage the users who have access to a product or workspace.
@@ -159,4 +159,4 @@ backticks after each name.
 - **Blog** `website-blog.md` — A blog page aggregates and displays multiple articles or posts in a chronological order, typically showing previews, titles, publication dates, and categories. It provides easy navigation through pagination or infinite scroll, allowing users to browse and discover content.
 - **Sign up** `website-sign-up.md` — A sign up page enables new users to create an account by providing required information through a form. It guides users through the registration process, validates input data, and establishes their credentials for accessing restricted features or personalized content.
 
-_Bundled content: v3.2.5, 2026-10-28._
+_Bundled content: v3.2.6, 2026-10-30._

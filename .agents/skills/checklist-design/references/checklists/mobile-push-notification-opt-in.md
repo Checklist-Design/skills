@@ -1,4 +1,4 @@
-# Push Notification Opt-in — Mobile app
+# Push Notif. Opt-in — Mobile app
 
 The custom screen shown before the system notification prompt to persuade a user to accept push notifications before they see the binary system dialog.
 
